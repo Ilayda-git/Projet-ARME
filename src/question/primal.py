@@ -15,9 +15,6 @@ class PrimalProblem:
         """
         result = linprog(c=self.costs, A_ub=self.constraints, b_ub=self.requirements, method='highs')
         if result.success:
-            print("Solution optimale trouvée.")
-            print("Coût total:", result.fun)
-            print("Lots achetés:", result.x)
             return result.x, result.fun
         else:
             print("Pas de solution optimale.")

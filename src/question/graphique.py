@@ -66,3 +66,5 @@ def plot_sensitivity_graph(price_range, cost_totals, profit_totals):
     plt.grid(True, linestyle='--', alpha=0.7)
     plt.legend()
     plt.show()
+    
+

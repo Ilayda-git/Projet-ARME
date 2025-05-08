@@ -62,7 +62,6 @@ def study_price_variation():
     table = PrettyTable()
     table.field_names = ["Prix du Lot 1 (M$)", "Coût total (M$)", "Lots achetés", "Bénéfice total (M$)", "Prix unitaires"]
 
-    print("\n=== Étude de sensibilité du prix du Lot 1 ===")
     for price in price_range:
         # Mettre à jour le coût du Lot 1
         costs[0] = price
