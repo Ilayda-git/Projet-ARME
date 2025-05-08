@@ -3,11 +3,11 @@ import os
 from prettytable import PrettyTable
 
 # Ajouter le dossier src au chemin d'import pour que les modules soient trouvés
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '../..')))
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), 'src/question')))
 
-from question.primal import PrimalProblem
-from question.dual import DualProblem
-from question.graphique import plot_3d_graph, plot_sensitivity_graph
+from primal import PrimalProblem
+from dual import DualProblem
+from graphique import plot_3d_graph, plot_sensitivity_graph
 
 def display_primal_results(lots, costs, cost_total):
     print("\nVoici la solution optimale du problème de minimisation de la dépense du pays PATIBULAIRE:")
