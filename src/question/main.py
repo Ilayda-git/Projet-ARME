@@ -44,7 +44,7 @@ def display_sensitivity_results(price, cost_total, lots, profit, prices):
 
 def study_price_variation():
     # Intervalle de variation du coût du Lot 1
-    price_range = list(range(5, 30))  # Variation de 5 à 30 M$
+    price_range = list(range(1, 30))  # Variation de 5 à 30 M$
     costs = [10, 12, 15]
     constraints = [
         [500, 300, 800],   # Fusils
