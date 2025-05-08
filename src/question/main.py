@@ -2,7 +2,7 @@ import sys
 import os
 from prettytable import PrettyTable
 
-# Ajouter le dossier src au chemin d'import pour que les modules soient trouvés
+
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), 'src/question')))
 
 from primal import PrimalProblem
@@ -44,7 +44,7 @@ def display_sensitivity_results(price, cost_total, lots, profit, prices):
 
 def study_price_variation():
     # Intervalle de variation du coût du Lot 1
-    price_range = list(range(1, 30))  # Variation de 5 à 30 M$
+    price_range = list(range(1, 30)) 
     costs = [10, 12, 15]
     constraints = [
         [500, 300, 800],   # Fusils
@@ -58,7 +58,7 @@ def study_price_variation():
     cost_totals = []
     profit_totals = []
 
-    # Création du tableau une seule fois pour l'ensemble des résultats
+
     table = PrettyTable()
     table.field_names = ["Prix du Lot 1 (M$)", "Coût total (M$)", "Lots achetés", "Bénéfice total (M$)", "Prix unitaires"]
 
@@ -100,20 +100,20 @@ def main():
     ]
     requirements = [100000, 200000, 100, 400, 400]
 
-    # Résolution du problème primal
+
     print("\n=== Problème Primal ===")
     primal = PrimalProblem(costs, constraints, requirements)
     lots, cost_total = primal.solve()
     display_primal_results(lots, costs, cost_total)
     plot_3d_graph(constraints, requirements, lots)
 
-    # Résolution du problème dual
+
     print("\n=== Problème Dual ===")
     dual = DualProblem(costs, constraints, requirements)
     prices, profit = dual.solve()
     display_dual_results(prices, profit)
 
-    # Étude de sensibilité du prix du Lot 1
+
     print("\n=== Étude de sensibilité du prix du Lot 1 ===")
     study_price_variation()
 
