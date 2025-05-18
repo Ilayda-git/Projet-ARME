@@ -3,10 +3,10 @@ import os
 import pytest
 
 # Ajouter le chemin vers les modules
-sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '../src')))
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '../optimisation_militaire')))
 
-from optimisation_militaire.primal import PrimalProblem
-from optimisation_militaire.dual import DualProblem
+from primal import PrimalProblem
+from dual import DualProblem
 
 @pytest.fixture
 def problem_data():

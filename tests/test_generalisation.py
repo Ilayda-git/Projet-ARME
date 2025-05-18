@@ -3,10 +3,11 @@ import os
 import pytest
 import numpy as np
 
-# Ajouter le chemin vers le dossier src
-sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '../src')))
+# Ajouter le chemin vers le dossier "optimisation_militaire"
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '../optimisation_militaire')))
 
-from optimisation_militaire.generalisation import GeneralizedPrimalProblem, GeneralizedDualProblem
+from generalisation import GeneralizedPrimalProblem, GeneralizedDualProblem
+
 
 @pytest.fixture
 def simple_problem():
