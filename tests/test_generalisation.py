@@ -3,7 +3,6 @@ import os
 import pytest
 import numpy as np
 
-# Ajouter le chemin vers le dossier "optimisation_militaire"
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '../optimisation_militaire')))
 
 from generalisation import GeneralizedPrimalProblem, GeneralizedDualProblem

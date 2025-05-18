@@ -2,7 +2,6 @@ import sys
 import os
 import pytest
 
-# Ajouter le chemin vers les modules
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '../optimisation_militaire')))
 
 from primal import PrimalProblem
