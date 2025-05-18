@@ -4,8 +4,8 @@ import pytest
 
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '../optimisation_militaire')))
 
-from primal import PrimalProblem
-from dual import DualProblem
+from question1 import PrimalProblem
+from question2 import DualProblem
 
 @pytest.fixture
 def problem_data():

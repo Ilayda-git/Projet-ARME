@@ -5,8 +5,8 @@ from prettytable import PrettyTable
 
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), 'optimisation_militaire/')))
 
-from primal import PrimalProblem
-from dual import DualProblem
+from question1 import PrimalProblem
+from question2 import DualProblem
 from graphique import plot_3d_graph, plot_sensitivity_graph
 
 def display_primal_results(lots, costs, cost_total):

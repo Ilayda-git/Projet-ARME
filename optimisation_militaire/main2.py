@@ -1,8 +1,8 @@
 import os
 import json
 from prettytable import PrettyTable
-from primal import PrimalProblem
-from dual import DualProblem
+from question1 import PrimalProblem
+from question2 import DualProblem
 from graphique import plot_generalized_sensitivity
 
 
