@@ -3,7 +3,7 @@ import os
 from prettytable import PrettyTable
 
 
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), 'src/question')))
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), 'src/optimisation_militaire')))
 
 from primal import PrimalProblem
 from dual import DualProblem
@@ -43,15 +43,15 @@ def display_sensitivity_results(price, cost_total, lots, profit, prices):
     print(table)
 
 def study_price_variation():
-    # Intervalle de variation du coût du Lot 1
+
     price_range = list(range(1, 30)) 
     costs = [10, 12, 15]
     constraints = [
-        [500, 300, 800],   # Fusils
-        [1000, 2000, 1500], # Grenades
-        [10, 20, 15],      # Chars
-        [100, 80, 15],     # Mitrailleuses
-        [80, 120, 200]     # Bazookas
+        [500, 300, 800],   
+        [1000, 2000, 1500],
+        [10, 20, 15],      
+        [100, 80, 15],     
+        [80, 120, 200]     
     ]
     requirements = [100000, 200000, 100, 400, 400]
 
@@ -63,28 +63,23 @@ def study_price_variation():
     table.field_names = ["Prix du Lot 1 (M$)", "Coût total (M$)", "Lots achetés", "Bénéfice total (M$)", "Prix unitaires"]
 
     for price in price_range:
-        # Mettre à jour le coût du Lot 1
         costs[0] = price
-
-        # Résolution du problème primal
+        
         primal = PrimalProblem(costs, constraints, requirements)
         lots, cost_total = primal.solve()
         cost_totals.append(cost_total)
 
-        # Résolution du problème dual
         dual = DualProblem(costs, constraints, requirements)
         prices, profit = dual.solve()
-        profit_totals.append(profit * 1000000)  # Mise à l'échelle du profit
+        profit_totals.append(profit * 1000000)  
 
-        # Préparer la ligne de résultat pour le tableau
+
         lots_str = ", ".join([f"{round(lot, 2)}" for lot in lots])
         prices_str = ", ".join([f"{round(price, 5)}" for price in prices])
         table.add_row([price, round(cost_total, 4), lots_str, round(profit * 1000000, 4), prices_str])
 
-    # Afficher le tableau complet une seule fois
     print(table)
 
-    # Visualiser l'impact de la variation du prix du Lot 1
     plot_sensitivity_graph(price_range, cost_totals, profit_totals)
 
 
@@ -92,11 +87,11 @@ def main():
     # Données du problème
     costs = [10, 12, 15]
     constraints = [
-        [500, 300, 800],   # Fusils
-        [1000, 2000, 1500], # Grenades
-        [10, 20, 15],      # Chars
-        [100, 80, 15],     # Mitrailleuses
-        [80, 120, 200]     # Bazookas
+        [500, 300, 800],   
+        [1000, 2000, 1500], 
+        [10, 20, 15],      
+        [100, 80, 15],     
+        [80, 120, 200]   
     ]
     requirements = [100000, 200000, 100, 400, 400]
 

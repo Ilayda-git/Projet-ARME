@@ -5,8 +5,8 @@ import pytest
 # Ajouter le chemin vers les modules
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '../src')))
 
-from question.primal import PrimalProblem
-from question.dual import DualProblem
+from optimisation_militaire.primal import PrimalProblem
+from optimisation_militaire.dual import DualProblem
 
 @pytest.fixture
 def problem_data():
@@ -43,3 +43,9 @@ def test_dual(problem_data):
     assert profit >= 0, "Le profit doit être positif."
     assert len(prices) == len(requirements), "Le nombre de prix doit correspondre au nombre d'armements."
     print("Test dual réussi.")
+
+
+
+def test_import_modules():
+    assert PrimalProblem is not None
+    assert DualProblem is not None
