@@ -1,6 +1,12 @@
 {
   "costs": [8, 10],
-  "armes": ["Fusils intelligents", "Grenades EMP", "Chars furtifs", "Mitrailleuses légères", "Bazookas à guidage laser"],
+  
+  "armes": ["Fusils intelligents", 
+            "Grenades EMP", 
+            "Chars furtifs", 
+            "Mitrailleuses légères", 
+            "Bazookas à guidage laser"],
+
   "constraints": [
     [100, 150],
     [80, 60],

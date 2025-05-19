@@ -1,9 +1,10 @@
 import os
 import json
 from prettytable import PrettyTable
-from question1 import PrimalProblem
-from question2 import DualProblem
+
 from graphique import plot_generalized_sensitivity
+from generalisation import GeneralizedPrimalProblem as PrimalProblem
+from generalisation import GeneralizedDualProblem as DualProblem
 
 
 def load_data(file_name):
