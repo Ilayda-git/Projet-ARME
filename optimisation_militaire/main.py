@@ -3,7 +3,7 @@ import os
 from prettytable import PrettyTable
 
 
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), 'optimisation_militaire/')))
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), 'Optimisation_militaire/')))
 
 from question import PrimalProblem
 from question import DualProblem

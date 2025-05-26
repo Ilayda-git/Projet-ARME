@@ -8,11 +8,12 @@ from generalisation import GeneralizedDualProblem as DualProblem
 
 
 def load_data(file_name):
-    """Charge les données JSON depuis le dossier data/ en chemin absolu"""
-    base_path = os.path.dirname(__file__)
-    file_path = os.path.join(base_path, "data", file_name)
+    """Charge les données JSON depuis le dossier data"""
+    base_path = os.path.dirname(os.path.dirname(__file__))  # remonte d’un niveau
+    file_path = os.path.join(base_path, "Data", file_name)
     with open(file_path, 'r') as f:
         return json.load(f)
+
 
 def display_input_data(constraints, costs, armes):
     print("\n" + "=" * 80)

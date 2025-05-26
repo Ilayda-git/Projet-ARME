@@ -3,7 +3,7 @@ import os
 import pytest
 import numpy as np
 
-sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '../optimisation_militaire')))
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '../Optimisation_militaire')))
 
 from generalisation import GeneralizedPrimalProblem, GeneralizedDualProblem
 
