@@ -17,18 +17,17 @@ class GeneralizedPrimalProblem:
 
 class GeneralizedDualProblem:
     def __init__(self, costs, constraints, requirements):
-        # Maximiser requirements^T * y ⇔ Minimiser -requirements^T * y
         self.costs = [-r for r in requirements]
 
-        # Transpose et corrige les signes : A_dual = A_primal^T
+
         A_dual = np.transpose(constraints)
-        self.constraints = [[v for v in row] for row in A_dual]  # Optionnel: explicite la conversion liste
-        self.requirements = costs  # c_primal → borne supérieure des contraintes du dual
+        self.constraints = [[v for v in row] for row in A_dual]  
+        self.requirements = costs  
 
     def solve(self):
         result = linprog(c=self.costs, A_ub=self.constraints, b_ub=self.requirements, method='highs')
         if result.success:
-            return result.x, -result.fun  # Remet le max
+            return result.x, -result.fun  
         else:
             print("Aucune solution optimale trouvée (dual).")
             return None, None
