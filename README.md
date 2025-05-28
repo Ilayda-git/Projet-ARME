@@ -19,6 +19,9 @@ Ces marchands proposent 3 types de lots (M$ = millions de dollars).
 
 
 
-Ecrire le problème sous la forme d'un programme linéaire et le résoudre. On supposera, sans doute à tort, que les lots sont fractionnables. On pourra proposer une représentation graphique des contraintes.
-De son coté, un fabricant d'armements unitaire DETAILIN veut s'emparer du marché. Il cherche donc déterminer les prix unitaire des 5 types d'armes. L'objectif est que chacun des 3 lots coûte au plus comme les lôts de MALANDRIN. Mais il cherche aussi maximiser son bénéfice. Écrire le problème linéaire associé et le résoudre. On comparera les formes matricielles des deux problèmes. On comprarera aussi leurs solutions respectives Ce problème linéaire s'appelle la forme duale du problème linéaire précédent.
-MALANDRIN fait varier le prix de son lot 1. Étudier l'impact de cette variation pour les deux problèmes.
+1 . Ecrire le problème sous la forme d'un programme linéaire et le résoudre. On supposera, sans doute à tort, que les lots sont fractionnables. On pourra proposer une représentation graphique des contraintes.
+
+
+2 . De son coté, un fabricant d'armements unitaire DETAILIN veut s'emparer du marché. Il cherche donc déterminer les prix unitaire des 5 types d'armes. L'objectif est que chacun des 3 lots coûte au plus comme les lôts de MALANDRIN. Mais il cherche aussi maximiser son bénéfice. Écrire le problème linéaire associé et le résoudre. On comparera les formes matricielles des deux problèmes. On comprarera aussi leurs solutions respectives Ce problème linéaire s'appelle la forme duale du problème linéaire précédent.
+
+3 . MALANDRIN fait varier le prix de son lot 1. Étudier l'impact de cette variation pour les deux problèmes.
