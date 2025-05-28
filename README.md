@@ -8,13 +8,15 @@ Il s'adresse pour ce faire à un marchands d'armes MALANDRIN. Celui-ci récupèr
 
 Ces marchands proposent 3 types de lots (M$ = millions de dollars).
 
-Lot 1	Lot2	Lot 3
-Fusils	500	300	800
-Grenades	1000	2000	1500
-Chars	10	20	15
-Mitrailleuses	100	80	15
-Bazookas	80	120	200
-Coûts des lots	10M$	12M$	15M$
+| Type d'armement         | Lot 1 | Lot 2 | Lot 3 |
+|-------------------------|-------|-------|-------|
+| Fusils                 | 500   | 300   | 800   |
+| Grenades               | 1000  | 2000  | 1500  |
+| Chars                  | 10    | 20    | 15    |
+| Mitrailleuses          | 100   | 80    | 15    |
+| Bazookas               | 80    | 120   | 200   |
+| **Coût des lots**      | 10 M$ | 12 M$ | 15 M$ |
+
 
 
 Ecrire le problème sous la forme d'un programme linéaire et le résoudre. On supposera, sans doute à tort, que les lots sont fractionnables. On pourra proposer une représentation graphique des contraintes.
