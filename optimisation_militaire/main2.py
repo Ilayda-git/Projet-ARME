@@ -43,64 +43,48 @@ def display_primal_solution(lots, costs):
     print(f"→ Coût total minimal (Patibulaire) : {round(total_cost, 2)} M$")
     return total_cost, lots
 
-def display_dual_solution(prices, armes):
+def display_dual_solution(prices, armes, requirements):
     table = PrettyTable()
     table.field_names = ["Type d'armement", "Prix unitaire (M$)", "Bénéfice (M$)"]
 
     benefit_total = 0
-    for arme, price in zip(armes, prices):
-        if arme.lower() == "fusils":
-            benefit = price * 100000
-        elif arme.lower() == "grenades":
-            benefit = price * 200000
-        elif arme.lower() == "chars":
-            benefit = price * 100
-        elif arme.lower() == "mitrailleuses":
-            benefit = price * 400
-        elif arme.lower() == "bazookas":
-            benefit = price * 400
-        else:
-            benefit = 0
+    for arme, price, demand in zip(armes, prices, requirements):
+        benefit = price * demand
         benefit_total += benefit
-        table.add_row([arme, round(price * 1_000_000, 5), round(benefit * 100, 2)])
+        table.add_row([arme, round(price, 5), round(benefit, 2)])
 
     print(table)
     print(f"→ Bénéfice total maximal (Detailin) : {round(benefit_total, 2)} M$")
     return benefit_total, prices
 
-def display_comparative_table(lots, costs, prices, armes):
+
+
+
+def display_comparative_table(lots, costs, prices, armes, requirements):
+
     table = PrettyTable()
     table.field_names = ["Lot", "Quantité", "Coût unitaire (M$)", "Coût total (M$)", "Prix unitaire (M$)", "Bénéfice (M$)"]
 
     total_cost = 0
     total_benefit = 0
-    for i, (lot, cost, price, arme) in enumerate(zip(lots, costs, prices, armes), 1):
+
+    for i, (lot, cost, price, arme, demand) in enumerate(zip(lots, costs, prices, armes, requirements), 1):
         cost_total = lot * cost
         total_cost += cost_total
 
-        if arme.lower() == "fusils":
-            benefit = price * 100000
-        elif arme.lower() == "grenades":
-            benefit = price * 200000
-        elif arme.lower() == "chars":
-            benefit = price * 100
-        elif arme.lower() == "mitrailleuses":
-            benefit = price * 400
-        elif arme.lower() == "bazookas":
-            benefit = price * 400
-        else:
-            benefit = 0
-
+        benefit = price * demand
         total_benefit += benefit
 
         table.add_row([
             f"Lot {i}", round(lot, 2), cost, round(cost_total, 2),
-            round(price, 5), round(benefit * 100, 2)
+            round(price, 5), round(benefit, 2)
         ])
 
     print(table)
     print(f"→ Coût total minimal (Patibulaire) : {round(total_cost, 2)} M$")
     print(f"→ Bénéfice total maximal (Detailin) : {round(total_benefit, 2)} M$")
+
+
 
 def main():
     print("\n" + "="*80)
@@ -116,23 +100,24 @@ def main():
     display_input_data(constraints, costs, armes)
 
     print("\n" + "-"*80)
-    print("QUESTION 1 : Quelle est la solution optimale pour PATIBULAIRE (minimiser les coûts)")
+    print("                        QUESTION 1 : Quelle est la solution optimale pour PATIBULAIRE (minimiser les coûts)")
     print("-"*80)
     primal = PrimalProblem(costs, constraints, requirements)
     lots, total_cost = primal.solve()
     total_cost, lots = display_primal_solution(lots, costs)
 
     print("\n" + "-"*80)
-    print("QUESTION 2 : Quelle est la solution optimale pour DETAILIN (maximiser les bénéfices)")
+    print("                        QUESTION 2 : Quelle est la solution optimale pour DETAILIN (maximiser les bénéfices)")
     print("-"*80)
     dual = DualProblem(costs, constraints, requirements)
     prices, profit = dual.solve()
-    benefit_total, prices = display_dual_solution(prices, armes)
+    benefit_total, prices = display_dual_solution(prices, armes, requirements)
+
 
     print("\n" + "="*80)
     print("                         QUESTION 3 : COMPARAISON PRIMAL / DUAL")
     print("="*80)
-    display_comparative_table(lots, costs, prices, armes)
+    display_comparative_table(lots, costs, prices, armes, requirements)
 
     print("\n" + "="*80)
     print("QUESTION 3 (Suite) : Étude de sensibilité – Variation du prix du Lot 1")
@@ -155,6 +140,7 @@ def main():
         profit_totals.append(profit)
 
     plot_generalized_sensitivity(price_range, cost_totals, profit_totals)
+
 
 if __name__ == "__main__":
     main()

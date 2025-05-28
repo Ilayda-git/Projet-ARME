@@ -1,5 +1,6 @@
 import sys
 import os
+import json
 import pytest
 import numpy as np
 
@@ -31,6 +32,8 @@ def test_generalized_primal_solution(simple_problem):
     assert cost >= 0, "Le coût doit être positif"
     print(f"Solution primal OK : coût = {cost}")
 
+
+
 def test_generalized_dual_solution(simple_problem):
     """Test que le problème dual généralisé retourne une solution valide"""
     costs, constraints, requirements = simple_problem
@@ -41,6 +44,8 @@ def test_generalized_dual_solution(simple_problem):
     assert len(prices) == len(requirements), "Nombre de prix = nombre de contraintes"
     assert profit >= 0, "Le profit doit être positif"
     print(f"Solution duale OK : profit = {profit}")
+
+
 
 def test_strong_duality(simple_problem):
     """Vérifie que le coût primal = profit dual (dualité forte)"""
@@ -53,6 +58,8 @@ def test_strong_duality(simple_problem):
 
     assert abs(cost - profit) < 1e-4, f"Dualité violée : coût={cost}, profit={profit}"
     print("Dualité forte vérifiée")
+
+
 
 def test_random_problem():
     """Génère un problème aléatoire et vérifie qu'une solution est trouvée"""
@@ -73,3 +80,35 @@ def test_random_problem():
 
     assert abs(cost - profit) < 1e-4, "Dualité forte non respectée"
     print("Test aléatoire OK avec dualité forte")
+    
+    
+
+def test_empty_problem():
+    costs = []
+    constraints = []
+    requirements = []
+
+    try:
+        primal = GeneralizedPrimalProblem(costs, constraints, requirements)
+        lots, cost = primal.solve()
+        assert lots is None or lots == [], "Résultat attendu vide"
+    except ValueError:
+        pass 
+
+
+
+def test_json_format():
+    import os
+    import json
+
+    file_path = os.path.join(os.path.dirname(__file__), "../data/generalisation_data.json")
+    assert os.path.exists(file_path), f"Fichier JSON introuvable à {file_path}"
+
+    with open(file_path) as f:
+        data = json.load(f)
+        assert "costs" in data and isinstance(data["costs"], list), "'costs' manquant ou mal formé"
+        assert "constraints" in data and isinstance(data["constraints"], list), "'constraints' manquant ou mal formé"
+        assert "requirements" in data and isinstance(data["requirements"], list), "'requirements' manquant ou mal formé"
+        assert len(data["constraints"]) == len(data["requirements"]), "Incohérence entre contraintes et besoins"
+
+

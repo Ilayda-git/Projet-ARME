@@ -95,21 +95,29 @@ def main():
     ]
     requirements = [100000, 200000, 100, 400, 400]
 
-
-    print("\n=== Problème Primal ===")
+    print("\n" + "-"*80)
+    print("                        PROBLEME PRIMAL")
+    print("\n" + "-"*80)
+    
     primal = PrimalProblem(costs, constraints, requirements)
     lots, cost_total = primal.solve()
     display_primal_results(lots, costs, cost_total)
     plot_3d_graph(constraints, requirements, lots)
 
-
-    print("\n=== Problème Dual ===")
+    print("\n" + "-"*80)
+    print("                        PROBLEME DUAL")
+    print("\n" + "-"*80)
+    
+    
     dual = DualProblem(costs, constraints, requirements)
     prices, profit = dual.solve()
     display_dual_results(prices, profit)
 
 
-    print("\n=== Étude de sensibilité du prix du Lot 1 ===")
+    print("\n" + "-"*80)
+    print("                        ÉTUDE DE LA SENSIBILITÉ DU PRIX DU LOT 1")
+    print("\n" + "-"*80)
+    
     study_price_variation()
 
 if __name__ == "__main__":

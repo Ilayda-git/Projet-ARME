@@ -59,14 +59,17 @@ def plot_sensitivity_graph(price_range, cost_totals, profit_totals):
     plt.show()
     
 
+
 def plot_generalized_sensitivity(price_range, cost_totals, profit_totals):
-    plt.figure()
-    plt.plot(price_range, cost_totals, label="Coût total (PATIBULAIRE)", marker="o")
-    plt.plot(price_range, profit_totals, label="Bénéfice total (DETAILIN)", marker="x")
+    plt.figure(figsize=(10, 6))
+    plt.plot(price_range, cost_totals, label="Coût total (PATIBULAIRE)", marker="o", color="blue")
+    plt.plot(price_range, profit_totals, label="Bénéfice total (DETAILIN)", marker="x", color="green")
     plt.xlabel("Prix du Lot 1 (M$)")
     plt.ylabel("Montant (M$)")
     plt.title("Impact de la variation du prix du Lot 1 sur le coût et le bénéfice")
     plt.legend()
-    plt.grid(True)
+    plt.grid(True, linestyle='--', alpha=0.7)
     plt.tight_layout()
     plt.show()
+
+
