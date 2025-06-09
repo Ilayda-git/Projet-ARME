@@ -2,7 +2,7 @@ import sys
 import os
 import pytest
 
-sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '../Optimisation_militaire')))
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '../Resolution')))
 
 from question import PrimalProblem
 from question import DualProblem
