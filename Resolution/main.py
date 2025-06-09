@@ -3,11 +3,11 @@ import os
 from prettytable import PrettyTable
 
 
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), 'Optimisation_militaire/')))
+sys.path.append(os.path.dirname(__file__))
 
-from question import PrimalProblem
-from question import DualProblem
+from question import PrimalProblem, DualProblem
 from graphique import plot_3d_graph, plot_sensitivity_graph
+
 
 def display_primal_results(lots, costs, cost_total):
     print("\nVoici la solution optimale du problème de minimisation de la dépense du pays PATIBULAIRE:")
@@ -23,9 +23,6 @@ def display_primal_results(lots, costs, cost_total):
 
 
 
-
-
-
 def display_dual_results(prices, profit):
     print("\nVoici la solution optimale du problème de maximisation du bénéfice de DETAILIN :")
     table = PrettyTable()
@@ -38,9 +35,6 @@ def display_dual_results(prices, profit):
     
     print(table)
     print(f"→ Le bénéfice total maximal pour DETAILIN est de {round(profit * 1000000, 4)} dollars.")
-
-
-
 
 
 
@@ -91,6 +85,7 @@ def study_price_variation():
     print(table)
 
     plot_sensitivity_graph(price_range, cost_totals, profit_totals)
+
 
 
 def main():

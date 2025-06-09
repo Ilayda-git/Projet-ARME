@@ -16,18 +16,18 @@ def main():
     print("\n===     Saisie interactive des données pour l'optimisation militaire     === ")
 
     # Saisie des coûts
-    costs = ask_for_list("\n➡️  Entrez les coûts des lots (exemple : 10 12 15) : ")
+    costs = ask_for_list("\n-->  Entrez les coûts des lots (exemple : 10 12 15) : ")
     n_lots = len(costs)
 
 
     # Saisie du nombre de contraintes
-    n_constraints = int(input("\n➡️  Combien de types d’armement différents (contraintes) souhaitez-vous définir ? : "))
+    n_constraints = int(input("\n-->  Combien de types d’armement différents (contraintes) souhaitez-vous définir ? : "))
 
 
 
 
     # Saisie des contraintes ligne par ligne
-    print(f"\n➡️ Pour chaque type d’armement, entrez les quantités contenues dans les {n_lots} lots.")
+    print(f"\n--> Pour chaque type d’armement, entrez les quantités contenues dans les {n_lots} lots.")
     constraints = []
     for i in range(n_constraints):
         prompt = f"   🔹 Type d’armement #{i+1} (quantités dans chaque lot, séparées par espaces) : "
@@ -36,12 +36,12 @@ def main():
 
 
     requirements = ask_for_list(
-        f"\n➡️  Entrez les besoins minimaux pour chaque type d’armement (exemple : 1000 500 200) : ",
+        f"\n-->  Entrez les besoins minimaux pour chaque type d’armement (exemple : 1000 500 200) : ",
         length=n_constraints
     )
 
     armes = []
-    print("\n➡️  Nommez chaque type d’armement (exemple : fusils, grenades, chars...) :")
+    print("\n-->  Nommez chaque type d’armement (exemple : fusils, grenades, chars...) :")
     for i in range(n_constraints):
         nom = input(f"   🔹 Nom du type d’armement #{i+1} : ")
         armes.append(nom)
