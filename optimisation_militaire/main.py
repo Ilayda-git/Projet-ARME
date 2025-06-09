@@ -12,27 +12,37 @@ from graphique import plot_3d_graph, plot_sensitivity_graph
 def display_primal_results(lots, costs, cost_total):
     print("\nVoici la solution optimale du problème de minimisation de la dépense du pays PATIBULAIRE:")
     table = PrettyTable()
-    table.field_names = ["Lot", "Quantité", "Coût unitaire (M$)", "Coût total (M$)"]
+    table.field_names = ["Lot", "Quantité", "Coût unitaire", "Coût total"]
     
     for i, (lot, cost) in enumerate(zip(lots, costs), 1):
         total_cost = lot * cost
-        table.add_row([f"Lot {i}", round(lot, 4), cost, round(total_cost, 4)])
+        table.add_row([f"Lot {i}", round(lot, 4), cost* 1000000, round(total_cost* 1000000, 4)])
     
     print(table)
-    print(f"Le dépense totale minimale pour satisfaire la demande du pays PATIBULAIRE est de {round(cost_total, 4)} millions de dollars.")
+    print(f"→ Le dépense totale minimale pour satisfaire la demande du pays PATIBULAIRE est de {round(cost_total, 4)} millions de dollars.")
+
+
+
+
+
 
 def display_dual_results(prices, profit):
     print("\nVoici la solution optimale du problème de maximisation du bénéfice de DETAILIN :")
     table = PrettyTable()
-    table.field_names = ["Type d'armement", "Prix unitaire (M$)", "Bénéfice (M$)"]
+    table.field_names = ["Type d'armement", "Prix unitaire ", "Bénéfice "]
     armes = ["fusils", "Grenades", "Chars", "Mitrailleuses", "bazookas"]
     
     for arme, price in zip(armes, prices):
         benefit = price * 100000 if arme == "fusils" else price * 200000 if arme == "Grenades" else 0
-        table.add_row([arme, round(price * 1000000, 5), round(benefit * 100, 4)])
+        table.add_row([arme, round(price * 1000000, 5), round(benefit * 1000000, 4)])
     
     print(table)
-    print(f"Le bénéfice total maximal pour DETAILIN est de {round(profit * 1000000, 4)} dollars.")
+    print(f"→ Le bénéfice total maximal pour DETAILIN est de {round(profit * 1000000, 4)} dollars.")
+
+
+
+
+
 
 def display_sensitivity_results(price, cost_total, lots, profit, prices):
     table = PrettyTable()
@@ -60,7 +70,7 @@ def study_price_variation():
 
 
     table = PrettyTable()
-    table.field_names = ["Prix du Lot 1 (M$)", "Coût total (M$)", "Lots achetés", "Bénéfice total (M$)", "Prix unitaires"]
+    table.field_names = ["Prix du Lot 1 (M$)", "Coût total ", "Lots achetés", "Bénéfice total ", "Prix unitaires"]
 
     for price in price_range:
         costs[0] = price
@@ -75,8 +85,8 @@ def study_price_variation():
 
 
         lots_str = ", ".join([f"{round(lot, 2)}" for lot in lots])
-        prices_str = ", ".join([f"{round(price, 5)}" for price in prices])
-        table.add_row([price, round(cost_total, 4), lots_str, round(profit * 1000000, 4), prices_str])
+        prices_str = ", ".join([f"{round(price * 1000000, 5)}" for price in prices])
+        table.add_row([price, round(cost_total* 1000000, 4), lots_str, round(profit * 1000000, 4), prices_str])
 
     print(table)
 
@@ -95,18 +105,18 @@ def main():
     ]
     requirements = [100000, 200000, 100, 400, 400]
 
-    print("\n" + "-"*80)
-    print("                        PROBLEME PRIMAL")
-    print("\n" + "-"*80)
+    print("\n" + "="*50)
+    print("                    PROBLEME PRIMAL")
+    print(50* "=" + "\n")
     
     primal = PrimalProblem(costs, constraints, requirements)
     lots, cost_total = primal.solve()
     display_primal_results(lots, costs, cost_total)
     plot_3d_graph(constraints, requirements, lots)
 
-    print("\n" + "-"*80)
-    print("                        PROBLEME DUAL")
-    print("\n" + "-"*80)
+    print("\n" + "="*50)
+    print("                   PROBLEME DUAL")
+    print(50* "=" + "\n")
     
     
     dual = DualProblem(costs, constraints, requirements)
@@ -114,9 +124,9 @@ def main():
     display_dual_results(prices, profit)
 
 
-    print("\n" + "-"*80)
-    print("                        ÉTUDE DE LA SENSIBILITÉ DU PRIX DU LOT 1")
-    print("\n" + "-"*80)
+    print("\n" + "="*60)
+    print("          ÉTUDE DE LA SENSIBILITÉ DU PRIX DU LOT 1")
+    print(60* "=" + "\n")
     
     study_price_variation()
 

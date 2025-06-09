@@ -9,7 +9,9 @@ from question import DualProblem
 
 @pytest.fixture
 def problem_data():
-    """Fixture pour les données du problème"""
+    """
+    Fixture pour les données du problème
+    """
     costs = [10, 12, 15]
     constraints = [
         [500, 300, 800],
@@ -22,7 +24,10 @@ def problem_data():
     return costs, constraints, requirements
 
 def test_primal(problem_data):
-    """Test du problème primal"""
+    """
+    Test du problème primal
+    """
+    
     costs, constraints, requirements = problem_data
     primal = PrimalProblem(costs, constraints, requirements)
     lots, cost = primal.solve()
@@ -33,7 +38,10 @@ def test_primal(problem_data):
     print("Test primal réussi.")
 
 def test_dual(problem_data):
-    """Test du problème dual"""
+    """
+    Test du problème dual
+    """
+    
     costs, constraints, requirements = problem_data
     dual = DualProblem(costs, constraints, requirements)
     prices, profit = dual.solve()

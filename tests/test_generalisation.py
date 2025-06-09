@@ -11,7 +11,10 @@ from generalisation import GeneralizedPrimalProblem, GeneralizedDualProblem
 
 @pytest.fixture
 def simple_problem():
-    """Fixture d'un problème simple de test"""
+    """
+    Fixture d'un problème simple de test
+    """
+    
     costs = [10, 12, 15]
     constraints = [
         [100, 200, 150],   # Fusils
@@ -22,7 +25,10 @@ def simple_problem():
     return costs, constraints, requirements
 
 def test_generalized_primal_solution(simple_problem):
-    """Test que le problème primal généralisé retourne une solution valide"""
+    """
+    Test que le problème primal généralisé retourne une solution valide
+    """
+    
     costs, constraints, requirements = simple_problem
     primal = GeneralizedPrimalProblem(costs, constraints, requirements)
     solution, cost = primal.solve()
@@ -35,7 +41,10 @@ def test_generalized_primal_solution(simple_problem):
 
 
 def test_generalized_dual_solution(simple_problem):
-    """Test que le problème dual généralisé retourne une solution valide"""
+    """
+    Test que le problème dual généralisé retourne une solution valide
+    """
+    
     costs, constraints, requirements = simple_problem
     dual = GeneralizedDualProblem(costs, constraints, requirements)
     prices, profit = dual.solve()
@@ -46,9 +55,11 @@ def test_generalized_dual_solution(simple_problem):
     print(f"Solution duale OK : profit = {profit}")
 
 
-
 def test_strong_duality(simple_problem):
-    """Vérifie que le coût primal = profit dual (dualité forte)"""
+    """
+    Vérifie que le coût primal = profit dual (dualité forte)
+    """
+    
     costs, constraints, requirements = simple_problem
     primal = GeneralizedPrimalProblem(costs, constraints, requirements)
     lots, cost = primal.solve()
@@ -62,7 +73,10 @@ def test_strong_duality(simple_problem):
 
 
 def test_random_problem():
-    """Génère un problème aléatoire et vérifie qu'une solution est trouvée"""
+    """
+    Génère un problème aléatoire et vérifie qu'une solution est trouvée
+    """
+    
     np.random.seed(42)
     n_lots = 5
     m_constraints = 3
@@ -72,7 +86,7 @@ def test_random_problem():
 
     primal = GeneralizedPrimalProblem(costs, constraints, requirements)
     lots, cost = primal.solve()
-    assert lots is not None, "Problème aléatoire - primal doit donner une solution"
+    assert lots is not None, "Problème aléatoire primal doit donner une solution"
 
     dual = GeneralizedDualProblem(costs, constraints, requirements)
     prices, profit = dual.solve()

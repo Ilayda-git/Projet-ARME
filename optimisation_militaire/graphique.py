@@ -39,9 +39,7 @@ def plot_3d_graph(A, b, res):
     ax.set_xlabel('Quantité de Lot 1', fontsize=14, labelpad=15)
     ax.set_ylabel('Quantité de Lot 2', fontsize=14, labelpad=15)
     ax.set_zlabel('Quantité de Lot 3', fontsize=14, labelpad=15)
-    ax.set_title("Optimisation des lots d'armement - Pays PATIBULAIRE", fontsize=18, pad=20)
-
-
+    ax.set_title("Optimisation des lots d'armement  Pays PATIBULAIRE", fontsize=18, pad=20)
     ax.legend(handles=legend_elements, loc='upper right', fontsize=12)
     plt.show()
 
@@ -64,8 +62,8 @@ def plot_generalized_sensitivity(price_range, cost_totals, profit_totals):
     plt.figure(figsize=(10, 6))
     plt.plot(price_range, cost_totals, label="Coût total (PATIBULAIRE)", marker="o", color="blue")
     plt.plot(price_range, profit_totals, label="Bénéfice total (DETAILIN)", marker="x", color="green")
-    plt.xlabel("Prix du Lot 1 (M$)")
-    plt.ylabel("Montant (M$)")
+    plt.xlabel("Prix du Lot 1 ")
+    plt.ylabel("Montant ")
     plt.title("Impact de la variation du prix du Lot 1 sur le coût et le bénéfice")
     plt.legend()
     plt.grid(True, linestyle='--', alpha=0.7)
