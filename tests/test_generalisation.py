@@ -112,9 +112,6 @@ def test_empty_problem():
 
 
 def test_json_format():
-    import os
-    import json
-
     file_path = os.path.join(os.path.dirname(__file__), "../data/generalisation_data.json")
     assert os.path.exists(file_path), f"Fichier JSON introuvable à {file_path}"
 

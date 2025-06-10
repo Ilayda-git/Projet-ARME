@@ -1,3 +1,15 @@
+"""
+Ce fichier Contient les fonctions de visualisation :
+
+- `plot_3d_graph` : projection graphique 3D du problème de base
+- `plot_sensitivity_graph` : visualisation de la variation du coût et du bénéfice
+    en fonction du prix d’un lot (étude de sensibilité)
+
+Utilise Matplotlib pour afficher les courbes.
+"""
+
+
+
 import numpy as np
 import matplotlib.pyplot as plt
 from matplotlib.patches import Patch
@@ -56,18 +68,3 @@ def plot_sensitivity_graph(price_range, cost_totals, profit_totals):
     plt.legend()
     plt.show()
     
-
-
-def plot_generalized_sensitivity(price_range, cost_totals, profit_totals):
-    plt.figure(figsize=(10, 6))
-    plt.plot(price_range, cost_totals, label="Coût total (PATIBULAIRE)", marker="o", color="blue")
-    plt.plot(price_range, profit_totals, label="Bénéfice total (DETAILIN)", marker="x", color="green")
-    plt.xlabel("Prix du Lot 1 ")
-    plt.ylabel("Montant ")
-    plt.title("Impact de la variation du prix du Lot 1 sur le coût et le bénéfice")
-    plt.legend()
-    plt.grid(True, linestyle='--', alpha=0.7)
-    plt.tight_layout()
-    plt.show()
-
-

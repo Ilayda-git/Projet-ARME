@@ -1,3 +1,21 @@
+"""
+Ce fichier sert à présenter les résultats de la généralisation du problème d’optimisation militaire.
+
+La saisie des données (coûts, contraintes, besoins, noms des armements) se fait **dans le fichier `interface.py`**
+via une interface en ligne de commande. Ce fichier `main.py` ne fait qu’exploiter les données
+enregistrées dans le fichier JSON généré.
+
+Fonctionnalités principales :
+- Chargement des données générées via `interface.py`
+- Résolution du problème primal (minimisation des coûts)
+- Résolution du problème dual (maximisation des bénéfices)
+- Affichage structuré des résultats (quantités achetées, bénéfices, etc.)
+- Analyse de sensibilité sur le prix du premier lot
+
+Ce script illustre ainsi comment une modélisation flexible peut s’adapter à différentes configurations saisies par l'utilisateur.
+"""
+
+
 import os
 import json
 from generalisation import GeneralizedPrimalProblem, GeneralizedDualProblem

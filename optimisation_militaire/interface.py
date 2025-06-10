@@ -1,3 +1,15 @@
+"""
+Ce script interagit avec l'utilisateur dans le terminal pour saisir les données nécessaires
+à la résolution d’un problème d’optimisation linéaire. Les données collectées sont sauvegardées
+au format JSON dans le dossier `Data`.
+
+Données saisies :
+- Coûts des lots
+- Quantités par type d’armement pour chaque lot
+- Besoins minimaux
+- Noms des types d’armements
+"""
+
 import json
 import os
 
@@ -14,26 +26,17 @@ def ask_for_list(prompt, length=None):
 
 def main():
     print("\n===     Saisie interactive des données pour l'optimisation militaire     === ")
-
-    # Saisie des coûts
     costs = ask_for_list("\n-->  Entrez les coûts des lots (exemple : 10 12 15) : ")
     n_lots = len(costs)
 
-
-    # Saisie du nombre de contraintes
     n_constraints = int(input("\n-->  Combien de types d’armement différents (contraintes) souhaitez-vous définir ? : "))
 
-
-
-
-    # Saisie des contraintes ligne par ligne
     print(f"\n--> Pour chaque type d’armement, entrez les quantités contenues dans les {n_lots} lots.")
     constraints = []
     for i in range(n_constraints):
         prompt = f"   🔹 Type d’armement #{i+1} (quantités dans chaque lot, séparées par espaces) : "
         row = ask_for_list(prompt, length=n_lots)
         constraints.append(row)
-
 
     requirements = ask_for_list(
         f"\n-->  Entrez les besoins minimaux pour chaque type d’armement (exemple : 1000 500 200) : ",
@@ -46,8 +49,6 @@ def main():
         nom = input(f"   🔹 Nom du type d’armement #{i+1} : ")
         armes.append(nom)
 
-
-
     data = {
         "costs": costs,
         "constraints": constraints,
@@ -55,7 +56,6 @@ def main():
         "armes": armes
     }
 
-    
     base_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "Data"))
     os.makedirs(base_dir, exist_ok=True)
     filepath = os.path.join(base_dir, "generalisation_data.json")
@@ -64,7 +64,6 @@ def main():
         json.dump(data, f, indent=4)
 
     print(f"\n Données sauvegardées avec succès dans {filepath}")
-
 
 if __name__ == "__main__":
     main()

@@ -1,3 +1,17 @@
+"""
+Ce script résout le problème d’optimisation linéaire pour le pays fictif PATIBULAIRE,
+qui cherche à acheter des armements à moindre coût parmi des lots prédéfinis.
+
+Il s’appuie sur la modélisation du problème primal (minimisation du coût) et
+du problème dual (maximisation du bénéfice) et affiche les résultats sous forme de tableau.
+
+Fonctionnalités :
+- Résolution du problème primal avec contraintes fixes
+- Résolution du problème dual associé
+- Affichage des résultats avec PrettyTable
+- Visualisation 3D et étude de sensibilité
+"""
+
 import sys
 import os
 from prettytable import PrettyTable
@@ -55,8 +69,7 @@ def study_price_variation():
         [1000, 2000, 1500],
         [10, 20, 15],      
         [100, 80, 15],     
-        [80, 120, 200]     
-    ]
+        [80, 120, 200]]
     requirements = [100000, 200000, 100, 400, 400]
 
     cost_totals = []
@@ -83,7 +96,6 @@ def study_price_variation():
         table.add_row([price, round(cost_total* 1000000, 4), lots_str, round(profit * 1000000, 4), prices_str])
 
     print(table)
-
     plot_sensitivity_graph(price_range, cost_totals, profit_totals)
 
 

@@ -1,3 +1,12 @@
+"""
+Ce fichier Contient les classes `PrimalProblem` et `DualProblem`, qui modélisent respectivement :
+- le problème primal : minimisation du coût total pour satisfaire les besoins militaires
+- le problème dual : maximisation du bénéfice en fixant des prix unitaires optimaux
+
+Ces classes utilisent le solveur `scipy.optimize.linprog` pour résoudre les problèmes.
+"""
+
+
 from scipy.optimize import linprog
 import numpy as np
 
