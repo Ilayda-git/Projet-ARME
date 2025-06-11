@@ -37,6 +37,10 @@ def display_primal_results(lots, costs, cost_total):
         cost_total (float) : Coût global minimum atteint
 
     Sortie console (exemple) :
+        ==================================================
+                    1.  PROBLEME PRIMAL
+        ==================================================
+    
         +-------+----------+---------------+-----------------+
         |  Lot  | Quantité | Coût unitaire |    Coût total   |
         +-------+----------+---------------+-----------------+
@@ -70,6 +74,10 @@ def display_dual_results(prices, profit):
         profit (float) : Bénéfice total maximal atteint par le fournisseur
 
     Sortie console (exemple) :
+        ==================================================
+                    2.  PROBLEME DUAL
+        ==================================================
+        
         +-----------------+----------------+-----------------+
         | Type d'armement | Prix unitaire  |    Bénéfice     |
         +-----------------+----------------+-----------------+
@@ -110,6 +118,10 @@ def display_sensitivity_results(price, cost_total, lots, profit, prices):
         prices (list[float]) : Prix unitaires d’armement associés
 
     Exemple de ligne affichée :
+        ============================================================
+                3.  ÉTUDE DE LA SENSIBILITÉ DU PRIX DU LOT 1
+        ============================================================
+    
         +--------------------+-----------------+------------------+-----------------+-------------------------------+
         | Prix du Lot 1 (M$) |   Coût total    |   Lots achetés   | Bénéfice total  |        Prix unitaires         |
         +--------------------+-----------------+------------------+-----------------+-------------------------------+
@@ -121,7 +133,7 @@ def display_sensitivity_results(price, cost_total, lots, profit, prices):
     """
     
     table = PrettyTable()
-    table.field_names = ["Prix du Lot 1 (M$)", "Coût total (M$)", "Lots achetés", "Bénéfice total (M$)", "Prix unitaires"]
+    table.field_names = ["Prix du Lot 1 (M$)", "Coût total ", "Lots achetés", "Bénéfice total ", "Prix unitaires"]
     lots_str = ", ".join([f"{round(lot, 2)}" for lot in lots])
     prices_str = ", ".join([f"{round(price, 5)}" for price in prices])
     table.add_row([price, round(cost_total, 4), lots_str, round(profit, 4), prices_str])

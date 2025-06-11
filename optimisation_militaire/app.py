@@ -62,6 +62,10 @@ def display_lot_table(constraints, costs, armes):
         armes (list[str]) : Nom des types d’armement
 
     Exemple de tableau affiché :
+        ================================================================================
+                    GÉNÉRALISATION D'UN PROBLÈME D'OPTIMISATION LINÉAIRE
+        ================================================================================
+    
         +---------------------+--------+--------+--------+
         | Type d'armement     | Lot 1  | Lot 2  | Lot 3  |
         +---------------------+--------+--------+--------+
@@ -98,6 +102,10 @@ def display_primal_solution(lots, costs):
         costs (list[float]) : Coût unitaire de chaque lot
 
     Affiche :
+        ==============================================================================================================
+                    QUESTION 1 : Quelle est la solution optimale pour le Client (minimiser les coûts)
+        ==============================================================================================================
+    
         +-------+----------+----------------+-------------+
         |  Lot  | Quantité | Coût unitaire  | Coût total  |
         +-------+----------+----------------+-------------+
@@ -137,6 +145,10 @@ def display_dual_solution(prices, requirements, armes):
         armes (list[str]) : Noms des armements.
 
     Affiche :
+        ==============================================================================================================
+                    QUESTION 2 : Quelle est la solution optimale pour le Fournisseur (maximiser les bénéfices)
+        ==============================================================================================================
+        
         +---------------------+---------------+-----------+
         |   Type d'armement   | Prix unitaire | Bénéfice  |
         +---------------------+---------------+-----------+
@@ -181,6 +193,11 @@ def display_comparative_table(lots, costs, prices, armes, requirements):
         requirements (list[float]) : Besoins minimaux en armement.
 
     Affiche :
+        =========================================================================
+                    QUESTION 3 : COMPARAISON PRIMAL / DUAL
+        =========================================================================
+
+    
         +-------+----------+---------------+------------+---------------+-----------+
         |  Lot  | Quantité | Coût unitaire | Coût total | Prix unitaire | Bénéfice  |
         +-------+----------+---------------+------------+---------------+-----------+
