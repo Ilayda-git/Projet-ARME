@@ -1,8 +1,8 @@
 """
 Ce fichier Contient les fonctions de visualisation :
 
-- `plot_3d_graph` : projection graphique 3D du problème de base
-- `plot_sensitivity_graph` : visualisation de la variation du coût et du bénéfice
+- 'plot_3d_graph' : projection graphique 3D du problème de base
+- 'plot_sensitivity_graph' : visualisation de la variation du coût et du bénéfice
     en fonction du prix d’un lot (étude de sensibilité)
 
 Utilise Matplotlib pour afficher les courbes.
@@ -17,6 +17,21 @@ from mpl_toolkits.mplot3d import Axes3D
 
 
 def plot_3d_graph(A, b, res):
+    
+    """
+    Affiche un graphique 3D représentant les contraintes linéaires
+    du problème primal sous forme de plans dans l'espace.
+
+    Paramètres :
+        A (list[list[float]]) : Matrice des coefficients des contraintes (5x3)
+        b (list[float]) : Côté droit des inégalités, représentant les besoins
+        res (list[float]) : Coordonnées (x, y, z) de la solution optimale
+
+    Ce graphique montre :
+    - Les plans d'inégalités formés par chaque contrainte.
+    - Le point rouge représentant la solution optimale.
+    """
+    
     x = np.linspace(0, 1000, 300)
     y = np.linspace(0, 1000, 300)
     x, y = np.meshgrid(x, y)
@@ -56,9 +71,28 @@ def plot_3d_graph(A, b, res):
     plt.show()
 
 def plot_sensitivity_graph(price_range, cost_totals, profit_totals):
+    
+    """
+    Affiche l'étude de sensibilité du prix du Lot 1.
+
+    Paramètres :
+        price_range (list[int]) : Liste des prix testés pour le Lot 1 (ex: 1 à 30 M$)
+        cost_totals (list[float]) : Coûts totaux obtenus pour chaque prix
+        profit_totals (list[float]) : Bénéfices totaux obtenus pour chaque prix
+
+    Ce graphique contient deux courbes :
+        - Ligne bleue : Coût total de l’achat des lots (problème primal)
+        - Ligne verte : Bénéfice total du vendeur (problème dual)
+
+    L'objectif est de visualiser à partir de quel prix
+    le coût ou le bénéfice devient stable ( optimal ).
+
+    Exemple visuel :
+        o Coût     (bleu)
+        x Bénéfice (vert)
+    """
+    
     plt.figure(figsize=(10, 6))
-
-
     plt.plot(price_range, cost_totals, label="Coût total (M$)", marker='o', color='blue')
     plt.plot(price_range, profit_totals, label="Bénéfice total (M$)", marker='x', color='green')
     plt.title("Impact de la variation du prix du Lot 1 sur le coût et le bénéfice")

@@ -1,5 +1,5 @@
 """
-Ce fichier Contient les classes `PrimalProblem` et `DualProblem`, qui modélisent respectivement :
+Ce fichier Contient les classes 'PrimalProblem' et 'DualProblem', qui modélisent respectivement :
 - le problème primal : minimisation du coût total pour satisfaire les besoins militaires
 - le problème dual : maximisation du bénéfice en fixant des prix unitaires optimaux
 

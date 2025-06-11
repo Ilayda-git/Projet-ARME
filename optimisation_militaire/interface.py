@@ -1,19 +1,33 @@
 """
-Ce script interagit avec l'utilisateur dans le terminal pour saisir les données nécessaires
-à la résolution d’un problème d’optimisation linéaire. Les données collectées sont sauvegardées
-au format JSON dans le dossier `Data`.
+Ce script permet à l’utilisateur de saisir manuellement les données nécessaires
+à la généralisation du problème d’optimisation militaire :
 
-Données saisies :
-- Coûts des lots
-- Quantités par type d’armement pour chaque lot
-- Besoins minimaux
-- Noms des types d’armements
+- les coûts des lots
+- la composition des lots
+- les besoins minimaux en armement
+- les noms des armements
+
+Les données sont ensuite sauvegardées automatiquement dans un fichier JSON
+situé dans le dossier 'Data', pour être utilisées ultérieurement par 'app.py' dans Optimisation_militaire.
 """
+
+
+
 
 import json
 import os
 
 def ask_for_list(prompt, length=None):
+    """
+    Demande à l’utilisateur une liste de valeurs numériques saisies sur une seule ligne
+
+    Paramètres :
+    - prompt (str)       : message affiché à l’utilisateur
+    - length (int) : nombre exact de valeurs attendues
+
+    Retour :
+    - list of float : les valeurs saisies par l’utilisateur
+    """
     while True:
         try:
             values = input(prompt).strip().split()
@@ -25,6 +39,16 @@ def ask_for_list(prompt, length=None):
             print("Erreur : saisie incorrecte, veuillez entrer des nombres séparés par des espaces.")
 
 def main():
+    """
+    Elle guide l’utilisateur à travers :
+    - la saisie des coûts des lots
+    - la définition du nombre de types d’armement
+    - la saisie de la composition de chaque lot
+    - la saisie des besoins minimaux
+    - la saisie des noms des armements
+
+    Les données sont sauvegardées dans 'Data/generalisation_data.json'
+    """
     print("\n===     Saisie interactive des données pour l'optimisation militaire     === ")
     costs = ask_for_list("\n-->  Entrez les coûts des lots (exemple : 10 12 15) : ")
     n_lots = len(costs)
