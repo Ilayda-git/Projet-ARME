@@ -15,6 +15,7 @@ import matplotlib.pyplot as plt
 
 
 def plot_generalized_sensitivity(price_range, cost_totals, profit_totals):
+    
     """
     Affiche un graphique 2D montrant l’impact de la variation du prix du Lot 1
     sur le coût total pour le client et le bénéfice total pour le fournisseur.
@@ -27,6 +28,7 @@ def plot_generalized_sensitivity(price_range, cost_totals, profit_totals):
     Retour :
     - Affiche un graphique matplotlib
     """
+    
     plt.figure(figsize=(10, 6))
     plt.plot(price_range, cost_totals, label="Coût total (Client)", marker="o", color="blue")
     plt.plot(price_range, profit_totals, label="Bénéfice total (Fournisseur)", marker="x", color="green")

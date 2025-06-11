@@ -304,17 +304,15 @@ def main():
     armes = data["armes"]
 
     display_lot_table(constraints, costs, armes)
-
     primal = GeneralizedPrimalProblem(costs, constraints, requirements)
     lots, cost_total = primal.solve()
     display_primal_solution(lots, costs)
-
+    
     dual = GeneralizedDualProblem(costs, constraints, requirements)
     prices, profit = dual.solve()
+    
     display_dual_solution(prices, requirements, armes)
-
     display_comparative_table(lots, costs, prices, armes, requirements)
-
     study_sensitivity(costs, constraints, requirements)
 
 
