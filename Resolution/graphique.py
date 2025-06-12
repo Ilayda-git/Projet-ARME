@@ -2,8 +2,8 @@
 Ce fichier Contient les fonctions de visualisation :
 
 - 'plot_3d_graph' : projection graphique 3D du problème de base
-- 'plot_sensitivity_graph' : visualisation de la variation du coût et du bénéfice
-    en fonction du prix d’un lot (étude de sensibilité)
+- 'plot_sensitivity_graph' : visualisation de la variation du coût et du bénéfice  
+en fonction du prix d’un lot (étude de sensibilité)
 
 Utilise Matplotlib pour afficher les courbes.
 """
@@ -13,16 +13,15 @@ Utilise Matplotlib pour afficher les courbes.
 import numpy as np
 import matplotlib.pyplot as plt
 from matplotlib.patches import Patch
-from mpl_toolkits.mplot3d import Axes3D
 
 
 def plot_3d_graph(A, b, res):
-    
+
     """
     Affiche un graphique 3D représentant les contraintes linéaires
     du problème primal sous forme de plans dans l'espace.
 
-    Paramètres :
+    Agrs :
         A (list[list[float]]) : Matrice des coefficients des contraintes (5x3)
         b (list[float]) : Côté droit des inégalités, représentant les besoins
         res (list[float]) : Coordonnées (x, y, z) de la solution optimale
@@ -31,7 +30,7 @@ def plot_3d_graph(A, b, res):
     - Les plans d'inégalités formés par chaque contrainte.
     - Le point rouge représentant la solution optimale.
     """
-    
+
     x = np.linspace(0, 1000, 300)
     y = np.linspace(0, 1000, 300)
     x, y = np.meshgrid(x, y)
@@ -71,11 +70,11 @@ def plot_3d_graph(A, b, res):
     plt.show()
 
 def plot_sensitivity_graph(price_range, cost_totals, profit_totals):
-    
+
     """
     Affiche l'étude de sensibilité du prix du Lot 1.
 
-    Paramètres :
+    Agrs :
         price_range (list[int]) : Liste des prix testés pour le Lot 1 (ex: 1 à 30 M$)
         cost_totals (list[float]) : Coûts totaux obtenus pour chaque prix
         profit_totals (list[float]) : Bénéfices totaux obtenus pour chaque prix

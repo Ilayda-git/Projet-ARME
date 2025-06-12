@@ -14,12 +14,12 @@ from scipy.optimize import linprog
 import numpy as np
 
 class GeneralizedPrimalProblem:
-    
+
     """
     Représente le problème primal : comment satisfaire les besoins en armement
     avec un coût total minimal.
 
-    Paramètres :
+    args :
     - costs (list of float)         : coûts unitaires de chaque lot
     - constraints (list of list)    : matrice des quantités de chaque armement par lot
     - requirements (list of float)  : quantités minimales à atteindre pour chaque armement
@@ -52,12 +52,12 @@ class GeneralizedPrimalProblem:
 
 
 class GeneralizedDualProblem:
-    
+
     """
     Représente le problème dual : comment fixer les prix unitaires des armements
     pour que les lots ne dépassent pas leur prix d’origine, tout en maximisant le bénéfice.
 
-    Paramètres :
+    args :
     - costs (list of float)         : coûts unitaires des lots (b_ub dans le dual)
     - constraints (list of list)    : matrice des quantités de chaque armement par lot
     - requirements (list of float)  : quantités minimales requises (deviennent c dans le dual)

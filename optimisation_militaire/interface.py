@@ -18,18 +18,18 @@ import json
 import os
 
 def ask_for_list(prompt, length=None):
-    
+
     """
     Demande à l’utilisateur une liste de valeurs numériques saisies sur une seule ligne
 
-    Paramètres :
+    Agrss :
     - prompt (str)       : message affiché à l’utilisateur
     - length (int) : nombre exact de valeurs attendues
 
     Retour :
     - list of float : les valeurs saisies par l’utilisateur
     """
-    
+
     while True:
         try:
             values = input(prompt).strip().split()
@@ -41,7 +41,7 @@ def ask_for_list(prompt, length=None):
             print("Erreur : saisie incorrecte, veuillez entrer des nombres séparés par des espaces.")
 
 def main():
-    
+
     """
     Elle guide l’utilisateur à travers :
     - la saisie des coûts des lots
@@ -52,7 +52,7 @@ def main():
 
     Les données sont sauvegardées dans 'Data/generalisation_data.json'
     """
-    
+
     print("\n===     Saisie interactive des données pour l'optimisation militaire     === ")
     costs = ask_for_list("\n-->  Entrez les coûts des lots (exemple : 10 12 15) : ")
     n_lots = len(costs)

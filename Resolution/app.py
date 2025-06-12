@@ -1,15 +1,16 @@
 """
-Ce script exécute la résolution du problème initial (non généralisé)
+    Script principal pour la résolution du problème d’optimisation militaire de base.
 
-Il fait appel à :
-- PrimalProblem : pour minimiser le coût pour le client
-- DualProblem   : pour maximiser le bénéfice pour le fournisseur
+    Ce fichier exécute trois étapes :
+    1. Résolution du problème primal (minimisation du coût pour le client)
+    2. Résolution du problème dual (maximisation du bénéfice pour le fournisseur)
+    3. Étude de sensibilité sur le prix du Lot 1 (variation de coût/bénéfice)
 
-Il affiche :
-- La combinaison optimale de lots
-- Les prix optimaux des armements
-- Une visualisation graphique (graphique 3D)
-- Une étude de sensibilité du prix d’un lot
+    Utilise :
+    - question.PrimalProblem et question.DualProblem
+    - graphique.plot_3d_graph et plot_sensitivity_graph
+
+    Affiche les résultats sous forme de tableaux et graphiques.
 """
 
 
@@ -27,20 +28,20 @@ from graphique import plot_3d_graph, plot_sensitivity_graph
 
 
 def display_primal_results(lots, costs, cost_total):
-    
+
     """
-    Affiche la solution optimale du problème primal (minimisation des coûts).
+    Affiche la solution optimale du problème primal (minimisation des coûts d’achat).
 
-    Paramètres :
-        lots (list[float]) : Quantité de chaque lot acheté
-        costs (list[float]) : Coût unitaire (en $) de chaque lot
-        cost_total (float) : Coût global minimum atteint
+    Args:
+        lots (list[float]): Quantité de chaque lot achetée
+        costs (list[float]): Coûts unitaires de chaque lot
+        cost_total (float): Coût total de la solution optimale
 
-    Sortie console (exemple) :
+    Sortie console :
         ==================================================
                     1.  PROBLEME PRIMAL
         ==================================================
-    
+
         +-------+----------+---------------+-----------------+
         |  Lot  | Quantité | Coût unitaire |    Coût total   |
         +-------+----------+---------------+-----------------+
@@ -50,34 +51,34 @@ def display_primal_results(lots, costs, cost_total):
         +-------+----------+---------------+-----------------+
         -> Le dépense totale minimale est de 1930.43 millions de dollars.
     """
-    
+
     print("\nVoici la solution optimale du problème de minimisation de la dépense du pays PATIBULAIRE:")
     table = PrettyTable()
     table.field_names = ["Lot", "Quantité", "Coût unitaire", "Coût total"]
-    
+
     for i, (lot, cost) in enumerate(zip(lots, costs), 1):
         total_cost = lot * cost
         table.add_row([f"Lot {i}", round(lot, 4), cost* 1000000, round(total_cost* 1000000, 4)])
-    
+
     print(table)
     print(f"-> Le dépense totale minimale pour satisfaire la demande du pays PATIBULAIRE est de {round(cost_total, 4)} millions de dollars.")
 
 
 
 def display_dual_results(prices, profit):
-    
+
     """
-    Affiche la solution optimale du problème dual (maximisation des bénéfices).
+    Affiche la solution optimale du problème dual (maximisation du bénéfice).
 
-    Paramètres :
-        prices (list[float]) : Prix unitaires optimaux pour chaque type d’armement
-        profit (float) : Bénéfice total maximal atteint par le fournisseur
+    Args:
+        prices (list[float]): Prix unitaires optimaux pour chaque type d’armement
+        profit (float): Bénéfice total maximal obtenu
 
-    Sortie console (exemple) :
+    Sortie console :
         ==================================================
                         2.  PROBLEME DUAL                   
         ==================================================
-        
+
         +-----------------+----------------+-----------------+
         | Type d'armement | Prix unitaire  |    Bénéfice     |
         +-----------------+----------------+-----------------+
@@ -89,48 +90,32 @@ def display_dual_results(prices, profit):
         +-----------------+----------------+-----------------+
         -> Le bénéfice total maximal est de 1 930 434 782.61 dollars.
     """
-    
+
     print("\nVoici la solution optimale du problème de maximisation du bénéfice de DETAILIN :")
     table = PrettyTable()
     table.field_names = ["Type d'armement", "Prix unitaire ", "Bénéfice "]
     armes = ["fusils", "Grenades", "Chars", "Mitrailleuses", "bazookas"]
-    
+
     for arme, price in zip(armes, prices):
         benefit = price * 100000 if arme == "fusils" else price * 200000 if arme == "Grenades" else 0
         table.add_row([arme, round(price * 1000000, 5), round(benefit * 1000000, 4)])
-    
+
     print(table)
     print(f"-> Le bénéfice total maximal pour DETAILIN est de {round(profit , 4)} millions de dollars.")
 
 
 
 def display_sensitivity_results(price, cost_total, lots, profit, prices):
-    
+
     """
-    Affiche une ligne résumant une itération de l'étude de sensibilité
-    selon le prix du Lot 1.
+    Affiche les résultats intermédiaires de l’étude de sensibilité pour une valeur donnée du prix du Lot 1.
 
-    Paramètres :
-        price (float) : Prix actuel du Lot 1
-        cost_total (float) : Coût total du client
-        lots (list[float]) : Quantités de lots achetés
-        profit (float) : Bénéfice du fournisseur
-        prices (list[float]) : Prix unitaires d’armement associés
-
-    Exemple de ligne affichée :
-        ============================================================
-                3.  ÉTUDE DE LA SENSIBILITÉ DU PRIX DU LOT 1
-        ============================================================
-    
-        +--------------------+--------------------+------------------+-------------------+-----------------------------------------+
-        | Prix du Lot 1 (M$) |     Coût total     |   Lots achetés   |   Bénéfice total  |        Prix unitaires                   |
-        +--------------------+--------------------+------------------+-------------------+-----------------------------------------+
-        |         1          |    200 000 000.0   | 200.0, 0.0, 0.0  |  200 000 000.0    | 2000.0, 0.0, 0.0, 0.0, 0.0              |
-        |         2          |    400 000 000.0   | 200.0, 0.0, 0.0  |  400 000 000.0    | 4000.0, 0.0, 0.0, 0.0, 0.0              |
-        |         3          |    600 000 000.0   | 200.0, 0.0, 0.0  |  600 000 000.0    | 6000.0, 0.0, 0.0, 0.0, 0.0              |
-        |         ...        |       ...          |       ...        |      ...          |             ...                         |
-        |         29         | 1 930 434 782.6087 | 0.0, 8.7, 121.74 | 1 930 434 782.6087| 10434.78261, 4434.78261, 0.0, 0.0, 0.0  |
-        +--------------------+--------------------+------------------+-------------------+-----------------------------------------+
+    Args:
+        price (float): Nouveau prix du Lot 1 testé
+        cost_total (float): Coût total du primal avec ce prix
+        lots (list[float]): Quantités de lots achetés pour cette simulation
+        profit (float): Bénéfice total du dual pour cette simulation
+        prices (list[float]): Prix unitaires calculés dans la solution duale
     """
     
     table = PrettyTable()
@@ -143,16 +128,30 @@ def display_sensitivity_results(price, cost_total, lots, profit, prices):
 
 
 def study_price_variation():
-    
+
     """
-    Réalise une étude de sensibilité en faisant varier le prix du Lot 1.
+    Effectue une étude de sensibilité sur le prix du Lot 1.
 
-    Pour chaque prix de 1 à 30 M$ :
-    - Résout le problème primal (côté client)
-    - Résout le problème dual (côté fournisseur)
+    Pour chaque prix du Lot 1 dans un intervalle [1, 29] :
+    - Résout le problème primal pour obtenir le coût total
+    - Résout le problème dual pour obtenir le bénéfice
+    - Affiche les résultats dans un tableau
+    - Trace un graphique de l'évolution du coût et du bénéfice
 
-    Affiche :
-        - Un graphique ligne Coût vs. Bénéfice
+    sortie console :
+        ============================================================
+                3.  ÉTUDE DE LA SENSIBILITÉ DU PRIX DU LOT 1
+        ============================================================
+
+        +--------------------+--------------------+------------------+-------------------+-----------------------------------------+
+        | Prix du Lot 1 (M$) |     Coût total     |   Lots achetés   |   Bénéfice total  |        Prix unitaires                   |
+        +--------------------+--------------------+------------------+-------------------+-----------------------------------------+
+        |         1          |    200 000 000.0   | 200.0, 0.0, 0.0  |  200 000 000.0    |      2000.0, 0.0, 0.0, 0.0, 0.0         |
+        |         2          |    400 000 000.0   | 200.0, 0.0, 0.0  |  400 000 000.0    |      4000.0, 0.0, 0.0, 0.0, 0.0         |
+        |         3          |    600 000 000.0   | 200.0, 0.0, 0.0  |  600 000 000.0    |      6000.0, 0.0, 0.0, 0.0, 0.0         |
+        |         ...        |       ...          |       ...        |      ...          |             ...                         |
+        |         29         | 1 930 434 782.6087 | 0.0, 8.7, 121.74 | 1 930 434 782.6087| 10434.78261, 4434.78261, 0.0, 0.0, 0.0  |
+        +--------------------+--------------------+------------------+-------------------+-----------------------------------------+
     """
 
     price_range = list(range(1, 30)) 
@@ -194,7 +193,7 @@ def study_price_variation():
 
 
 def main():
-    
+
     """
     Point d’entrée du script de résolution du problème initial.
 
@@ -205,7 +204,8 @@ def main():
     - Étude de sensibilité sur le prix du Lot 1.
 
     Exécution typique :
-        (base) NomDeUtilisateur ProjetARME % cd ARME/Resolution uv run app.py 
+        (base) NomDeUtilisateur Projet-ARME % cd Resolution
+        (base) NomDeUtilisateur Resolution % uv run app.py
     """
     
     # Données du problème
@@ -222,7 +222,7 @@ def main():
     print("\n" + "="*50)
     print("                  1.  PROBLEME PRIMAL")
     print(50* "=" + "\n")
-    
+
     primal = PrimalProblem(costs, constraints, requirements)
     lots, cost_total = primal.solve()
     display_primal_results(lots, costs, cost_total)
@@ -231,8 +231,8 @@ def main():
     print("\n" + "="*50)
     print("                 2.  PROBLEME DUAL")
     print(50* "=" + "\n")
-    
-    
+
+
     dual = DualProblem(costs, constraints, requirements)
     prices, profit = dual.solve()
     display_dual_results(prices, profit)

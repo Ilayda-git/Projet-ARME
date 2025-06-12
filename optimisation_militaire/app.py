@@ -1,15 +1,19 @@
 """
-Ce fichier exécute l’analyse du problème d’optimisation généralisé à partir des données saisies dans interface.py 
-et sauvegardées dans le fichier JSON.
+    Script principal pour la résolution généralisée du problème d’optimisation militaire.
 
-Il permet de :
-- Résoudre le problème primal (minimisation des coûts pour le client)
-- Résoudre le problème dual (maximisation du bénéfice pour le fournisseur)
-- Comparer les deux solutions
-- Étudier l’impact du prix du Lot 1 sur le coût total et le bénéfice
+    Fonctionnalités :
+    - Lecture dynamique des données depuis un fichier JSON généré par interface.py.
+    - Résolution du problème primal pour minimiser le coût d’achat.
+    - Résolution du problème dual pour maximiser le bénéfice fournisseur.
+    - Comparaison des résultats primal/dual.
+    - Étude de sensibilité sur la variation du prix du Lot 1.
 
-Les résultats sont affichés sous forme de tableaux et de graphique.
+    Ce fichier utilise :
+    - generalisation.GeneralizedPrimalProblem
+    - generalisation.GeneralizedDualProblem
+    - graphique.plot_generalized_sensitivity
 """
+
 
 
 
@@ -22,29 +26,38 @@ from prettytable import PrettyTable
 
 
 def load_data(filename):
-    
+
     """
-    Charge les données JSON nécessaires à la résolution du problème d'optimisation.
+    Charge les données JSON générées par l'utilisateur depuis le fichier de la généralisation dans Data.
 
-    Paramètre :
-        filename (str) : Nom du fichier JSON situé dans le dossier 'Data'.
+    Args :
+        filename (str): Nom du fichier JSON contenant les données.
 
-    Retourne fichier 'generalisation_data.json' : 
-        dict : Contenu du fichier contenant :
-            - costs : Liste des coûts des lots
-            - constraints : Matrice des contraintes par type d’armement
-            - requirements : Liste des besoins minimaux
-            - armes : Liste des types d’armement
+    Exemple sortie donnée :
+    {
+    "costs": [7.0, 11.0, 14.0],
 
-    Exemple :
-        {
-            "costs": [10, 12, 15],
-            "constraints": [[500, 300, 800], ...],
-            "requirements": [100000, 200000, ...],
-            "armes": ["fusils", "grenades", ...]
-        }
+    "constraints": [[300.0, 600.0, 500.0],
+                    [800.0, 1000.0, 1200.0],
+                    [12.0, 8.0, 20.0],
+                    [50.0, 60.0, 70.0],
+                    [30.0, 90.0, 160.0]],
+
+    "requirements": [100000.0,
+                    200000.0, 
+                    100.0, 
+                    400.0, 
+                    400.0],
+
+    "armes": [
+        "fusils ",
+        "Grenades soniques ",
+        "Chars amphibies",
+        "Mitrailleuses laser",
+        "Bazookas autonomes"]
+    }
     """
-    
+
     path = os.path.join(os.path.dirname(__file__), '..', 'Data', filename)
     with open(path, 'r') as f:
         return json.load(f)
@@ -52,20 +65,20 @@ def load_data(filename):
 
 
 def display_lot_table(constraints, costs, armes):
-    
+
     """
-    Affiche le tableau initial des types d’armement contenus dans chaque lot, ainsi que leur coût. 
+    Affiche les informations des lots proposés dans un tableau.
 
-    Paramètres :
-        constraints (list[list[float]]) : Quantité d’armement par lot
-        costs (list[float]) : Coût de chaque lot
-        armes (list[str]) : Nom des types d’armement
+    Args :
+        constraints (list[list[float]]): Quantité de chaque type d’arme dans chaque lot
+        costs (list[float]): Coûts unitaires de chaque lot
+        armes (list[str]): Noms des types d’armement
 
-    Exemple de tableau affiché :
+    Exemple de sortie console :
         ================================================================================
                     GÉNÉRALISATION D'UN PROBLÈME D'OPTIMISATION LINÉAIRE
         ================================================================================
-    
+
         +---------------------+--------+--------+--------+
         | Type d'armement     | Lot 1  | Lot 2  | Lot 3  |
         +---------------------+--------+--------+--------+
@@ -77,7 +90,7 @@ def display_lot_table(constraints, costs, armes):
         | Coûts des lots      |  7 M$  | 11 M$  | 14 M$  |
         +---------------------+--------+--------+--------+
     """
-    
+
     table = PrettyTable()
     n_lots = len(costs)
     headers = ["Type d'armement"] + [f"Lot {i+1}" for i in range(n_lots)]
@@ -93,19 +106,19 @@ def display_lot_table(constraints, costs, armes):
 
 
 def display_primal_solution(lots, costs):
-    
+
     """
-    Résout et affiche la solution du problème primal (minimisation du coût).
+    Affiche les résultats du problème primal : quantités optimales de lots à acheter pour minimiser les coûts.
 
-    Paramètres :
-        lots (list[float]) : Quantité de chaque lot acheté
-        costs (list[float]) : Coût unitaire de chaque lot
+    Args :
+        lots (list[float]): Quantités de chaque lot à acheter
+        costs (list[float]): Coûts unitaires associés à chaque lot
 
-    Affiche :
+    Exemple de sortie console :
         ==============================================================================================================
                     QUESTION 1 : Quelle est la solution optimale pour le Client (minimiser les coûts)
         ==============================================================================================================
-    
+
         +-------+----------+----------------+-------------+
         |  Lot  | Quantité | Coût unitaire  | Coût total  |
         +-------+----------+----------------+-------------+
@@ -135,16 +148,19 @@ def display_primal_solution(lots, costs):
 
 
 def display_dual_solution(prices, requirements, armes):
-    
+
     """
-    Résout et affiche la solution du problème dual (maximisation du bénéfice).
+    Affiche les résultats du problème dual : prix unitaires optimaux pour chaque type d’armement et bénéfice total.
 
-    Paramètres :
-        prices (list[float]) : Prix unitaires optimaux des types d’armement.
-        requirements (list[float]) : Quantité minimale demandée pour chaque armement.
-        armes (list[str]) : Noms des armements.
+    Args :
+        prices (list[float]): Prix unitaires calculés par le modèle dual
+        requirements (list[float]): Demandes minimales pour chaque type d’armement
+        armes (list[str]): Noms des types d’armement
 
-    Affiche :
+    Returns :
+        float: Le bénéfice total maximal calculé.
+
+    Exemple de sortie console :
         ==============================================================================================================
                     QUESTION 2 : Quelle est la solution optimale pour le Fournisseur (maximiser les bénéfices)
         ==============================================================================================================
@@ -160,7 +176,7 @@ def display_dual_solution(prices, requirements, armes):
         +---------------------+---------------+-----------+
         -> Bénéfice total maximal (Fournisseur) : 2000.0 
     """
-    
+
     print("\n" + "=" * 110)
     print("                  QUESTION 2 : Quelle est la solution optimale pour le Fournisseur (maximiser les bénéfices)")
     print(110* "=" + "\n")
@@ -181,23 +197,22 @@ def display_dual_solution(prices, requirements, armes):
 
 
 def display_comparative_table(lots, costs, prices, armes, requirements):
-    
+
     """
     Affiche un tableau croisé comparant la solution du primal et du dual.
 
-    Paramètres :
+    Args :
         lots (list[float]) : Quantité de chaque lot acheté.
         costs (list[float]) : Coût unitaire de chaque lot.
         prices (list[float]) : Prix unitaire optimal de chaque armement.
         armes (list[str]) : Types d’armement.
         requirements (list[float]) : Besoins minimaux en armement.
 
-    Affiche :
+    Exemple de sortie console :
         =========================================================================
                     QUESTION 3 : COMPARAISON PRIMAL / DUAL
         =========================================================================
 
-    
         +-------+----------+---------------+------------+---------------+-----------+
         |  Lot  | Quantité | Coût unitaire | Coût total | Prix unitaire | Bénéfice  |
         +-------+----------+---------------+------------+---------------+-----------+
@@ -208,7 +223,7 @@ def display_comparative_table(lots, costs, prices, armes, requirements):
         -> Coût total minimal (Patibulaire) : 2000.0
         -> Bénéfice total maximal (Detailin) : 2000.0
     """
-    
+
     print("\n" + "=" * 110)
     print("                  QUESTION 3 : COMPARAISON PRIMAL / DUAL")
     print(110* "=" + "\n")
@@ -237,21 +252,21 @@ def display_comparative_table(lots, costs, prices, armes, requirements):
 
 
 def study_sensitivity(costs, constraints, requirements):
-    
+
     """
     Analyse l’impact de la variation du prix du premier lot sur :
     - le coût total pour le client
     - le bénéfice total du fournisseur
 
-    Paramètres :
+    Args :
     - costs (list of float)       : liste des prix initiaux des lots
     - constraints (list of list)  : matrice de composition des lots
     - requirements (list of int)  : besoins à satisfaire
 
-    Retour :
+    Exemple de sortie console :
     - Affiche un graphique de sensibilité
     """
-    
+
     print("\n" + "=" * 110)
     print("                   QUESTION 3 (Suite) : Étude de sensibilité – Variation du prix du Lot 1")
     print(110* "=" + "\n")
@@ -277,7 +292,7 @@ def study_sensitivity(costs, constraints, requirements):
 
 
 def main():
-    
+
     """
     Fonction principale exécutée lors du lancement du programme.
 
@@ -290,6 +305,11 @@ def main():
         6. Étude de sensibilité du prix du Lot 1
 
     Ce fichier complète 'interface.py' qui sert à initialiser les données utilisateur.
+    
+    Exécution typique :
+        (base) NomDeUtilisateur Projet-ARME % cd Optimisation_militaire
+        (base) NomDeUtilisateur Optimisation_militaire % uv run interface.py 
+        (base) NomDeUtilisateur Optimisation_militaire % uv run app.py
     """
 
     print("\n" + "=" * 80)
@@ -307,10 +327,10 @@ def main():
     primal = GeneralizedPrimalProblem(costs, constraints, requirements)
     lots, cost_total = primal.solve()
     display_primal_solution(lots, costs)
-    
+
     dual = GeneralizedDualProblem(costs, constraints, requirements)
     prices, profit = dual.solve()
-    
+
     display_dual_solution(prices, requirements, armes)
     display_comparative_table(lots, costs, prices, armes, requirements)
     study_sensitivity(costs, constraints, requirements)
