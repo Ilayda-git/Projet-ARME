@@ -1,11 +1,11 @@
 """
-Ce fichier Contient les fonctions de visualisation :
+    Ce fichier Contient les fonctions de visualisation :
 
-- 'plot_3d_graph' : projection graphique 3D du problème de base
-- 'plot_sensitivity_graph' : visualisation de la variation du coût et du bénéfice  
-en fonction du prix d’un lot (étude de sensibilité)
+    - 'plot_3d_graph' : projection graphique 3D du problème de base
+    - 'plot_sensitivity_graph' : visualisation de la variation du coût et du bénéfice  
+    en fonction du prix d’un lot (étude de sensibilité)
 
-Utilise Matplotlib pour afficher les courbes.
+    Utilise Matplotlib pour afficher les courbes.
 """
 
 

@@ -1,15 +1,14 @@
 """
-Ce module contient la fonction nécessaire pour visualiser graphiquement :
-- la sensibilité du coût et du bénéfice à la variation du prix d’un lot
+    Ce module contient la fonction nécessaire pour visualiser graphiquement :
+    - la sensibilité du coût et du bénéfice à la variation du prix d’un lot
 
-Il utilise 'matplotlib' pour produire des visualisations lisibles et interprétables
-dans le cadre de l’analyse économique et stratégique du problème.
+    Il utilise 'matplotlib' pour produire des visualisations lisibles et interprétables
+    dans le cadre de l’analyse économique et stratégique du problème.
 """
 
 
 
 
-import numpy as np
 import matplotlib.pyplot as plt
 
 

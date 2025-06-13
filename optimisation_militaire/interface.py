@@ -1,14 +1,14 @@
 """
-Ce script permet à l’utilisateur de saisir manuellement les données nécessaires
-à la généralisation du problème d’optimisation militaire :
+    Ce script permet à l’utilisateur de saisir manuellement les données nécessaires
+    à la généralisation du problème d’optimisation militaire :
 
-- les coûts des lots
-- la composition des lots
-- les besoins minimaux en armement
-- les noms des armements
+    - les coûts des lots
+    - la composition des lots
+    - les besoins minimaux en armement
+    - les noms des armements
 
-Les données sont ensuite sauvegardées automatiquement dans un fichier JSON
-situé dans le dossier 'Data', pour être utilisées ultérieurement par 'app.py' dans Optimisation_militaire.
+    Les données sont ensuite sauvegardées automatiquement dans un fichier JSON
+    situé dans le dossier 'Data', pour être utilisées ultérieurement par 'app.py' dans Optimisation_militaire.
 """
 
 
