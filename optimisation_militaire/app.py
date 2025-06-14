@@ -220,8 +220,8 @@ def display_comparative_table(lots, costs, prices, armes, requirements):
         | Lot 2 |  111.11  |      11.0     |  1222.22   |     0.005     |   1000.0  |
         | Lot 3 |   0.0    |      14.0     |    0.0     |      0.0      |    0.0    |
         +-------+----------+---------------+------------+---------------+-----------+
-        -> Coût total minimal (Patibulaire) : 2000.0
-        -> Bénéfice total maximal (Detailin) : 2000.0
+        -> Coût total minimal (Client) : 2000.0
+        -> Bénéfice total maximal (Fournisseur) : 2000.0
     """
 
     print("\n" + "=" * 110)
@@ -246,8 +246,8 @@ def display_comparative_table(lots, costs, prices, armes, requirements):
         ])
 
     print(table)
-    print(f"-> Coût total minimal (Patibulaire) : {round(total_cost, 2)}")
-    print(f"-> Bénéfice total maximal (Detailin) : {round(total_benefit, 2)}")
+    print(f"-> Coût total minimal (Client) : {round(total_cost, 2)}")
+    print(f"-> Bénéfice total maximal (Fournisseur) : {round(total_benefit, 2)}")
 
 
 

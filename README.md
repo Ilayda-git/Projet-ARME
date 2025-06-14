@@ -1,10 +1,12 @@
-# INTRODUCTION:
+# 📦 PROJET ARME – Optimisation linéaire d’achat d’armement
+
+## INTRODUCTION
 
 Ce projet ARME simule la planification d’achats d’armements pour le pays fictif PATIBULAIRE, qui doit satisfaire des besoins minimaux en défense tout en minimisant le coût total.
 
 ProjetARME est une bibliothèque Python conçue pour résoudre des problèmes de programmation linéaire. Elle propose une interface claire et facile à utiliser, adaptée à divers domaines tels que la logistique, la gestion de la production ou la planification.
 
-# Fonctionnalités principales
+## Fonctionnalités principales
 
 - Résolution de problèmes de programmation linéaire appliqués à la planification d’achats militaires.
 - Version classique avec données fixes.
@@ -16,44 +18,44 @@ Ce module permet de résoudre différents types de problèmes. L'un d'eux, appel
 
 Ce travail illustre les enjeux économiques et stratégiques liés à l’achat d’armements dans un cadre optimisé.
 
-# STRUCTURE DU PROJET:
+## STRUCTURE DU PROJET:
 
 Le projet est organisé en plusieurs dossiers distincts pour bien séparer les différentes parties. 
 - Le dossier DATA contient les fichiers JSON qui regroupent les données utilisées, telles que les coûts, contraintes et besoins servant aux calculs d’optimisation. 
-- Le dossier optimisation_militaire contient la version généralisée du projet avec quatre fichiers principaux : main.py pour lancer cette version, generalisation.py qui inclut la modélisation étendue, graphique.py qui fournit les fonctions de visualisation, et interface.py qui gère l’interaction utilisateur. 
-- Le dossier resolution contient la version classique du problème avec trois fichiers : main.py, question.py qui définit les classes PrimalProblem et DualProblem ainsi que leurs méthodes de résolution, et graphique.py pour les visualisations graphiques. 
-- Enfin, le dossier test regroupe deux fichiers de tests unitaires, test_generalisation.py et test_question.py, qui permettent de vérifier la validité et la robustesse du code.
+- Le dossier optimisation_militaire contient la version généralisée du projet avec quatre fichiers principaux : app.py pour lancer cette version, generalisation.py qui inclut la modélisation étendue, graphique.py qui fournit les fonctions de visualisation, et interface.py qui gère l’interaction utilisateur. 
+- Le dossier resolution contient la version classique du problème avec trois fichiers : app.py, question.py qui définit les classes PrimalProblem et DualProblem ainsi que leurs méthodes de résolution, et graphique.py pour les visualisations graphiques. 
+- Enfin, le dossier test regroupe deux fichiers de tests unitaires, test_optimisation_militaire.py et test_resolution.py, qui permettent de vérifier la validité et la robustesse du code.
 
 projet_arme/
 │
 ├── DATA/
-│   └── data.json                 # Fichier JSON contenant les données (coûts, contraintes, besoins)
+│   └── generalisation_data.json        # Fichier JSON avec les données (coûts, contraintes, besoins)
 │
 ├── optimisation_militaire/
-│   ├── graphique.py              # Fonctions pour visualisations graphiques (version généralisée)
-│   ├── generalisation.py         # Modélisation généralisée du problème d'optimisation
-│   ├── interface.py             # Interface utilisateur pour interagir avec la version généralisée
-│   └── main.py                  # Script principal pour lancer la version généralisée
+│   ├── graphique.py                    # Visualisations graphiques (version généralisée)
+│   ├── generalisation.py               # Modélisation généralisée (primal & dual)
+│   ├── interface.py                    # Interface utilisateur pour saisir les données
+│   └── app.py                          # Script principal version généralisée
 │
 ├── resolution/
-│   ├── graphique.py              # Fonctions graphiques pour la version classique
-│   ├── main.py                   # Script principal pour lancer la version classique
-│   └── question.py               # Définition des classes PrimalProblem et DualProblem
+│   ├── graphique.py                    # Visualisations pour la version classique
+│   ├── app.py                          # Script principal version classique
+│   └── question.py                     # Définition des classes PrimalProblem & DualProblem
 │
 └── test/
-    ├── test_generalisation.py   # Tests unitaires pour la version généralisée
-    └── test_question.py          # Tests unitaires pour la version classique
+    ├── test_optimisation_militaire.py          # Tests unitaires pour la version généralisée
+    └── test_resolution.py                # Tests unitaires pour la version classique
 
-# EXIGENCE:
+## EXIGENCE:
 Python3.11
 
-# INSTALATION :
-## VIA PIP
+## INSTALATION :
+### VIA PIP
 python -m pip install git+https://github.com/Ilayda-git/Projet-ARME.git
 
 Une fois la bibliothèque installée sur votre machine, vous pouvez l’utiliser directement dans vos scripts Python. La création d’un environnement virtuel n’est alors pas indispensable, bien qu’elle reste recommandée pour isoler les dépendances d’un projet.
 
-## VIA LE CLONAGE ET POETRY
+### VIA LE CLONAGE ET POETRY
 - Clonez le package avec la commande suivante :
 git clone https://github.com/Ilayda-git/Projet-ARME.git
 
