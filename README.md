@@ -1,12 +1,12 @@
 # 📦 PROJET ARME – Optimisation linéaire d’achat d’armement
 
-## INTRODUCTION
+## 1.INTRODUCTION
 
 Ce projet ARME simule la planification d’achats d’armements pour le pays fictif PATIBULAIRE, qui doit satisfaire des besoins minimaux en défense tout en minimisant le coût total.
 
 ProjetARME est une bibliothèque Python conçue pour résoudre des problèmes de programmation linéaire. Elle propose une interface claire et facile à utiliser, adaptée à divers domaines tels que la logistique, la gestion de la production ou la planification.
 
-## Fonctionnalités principales
+## 2.Fonctionnalités principales
 
 - Résolution de problèmes de programmation linéaire appliqués à la planification d’achats militaires.
 - Version classique avec données fixes.
@@ -18,7 +18,7 @@ Ce module permet de résoudre différents types de problèmes. L'un d'eux, appel
 
 Ce travail illustre les enjeux économiques et stratégiques liés à l’achat d’armements dans un cadre optimisé.
 
-## STRUCTURE DU PROJET:
+## 3.STRUCTURE DU PROJET:
 
 Le projet est organisé en plusieurs dossiers distincts pour bien séparer les différentes parties. 
 - Le dossier DATA contient les fichiers JSON qui regroupent les données utilisées, telles que les coûts, contraintes et besoins servant aux calculs d’optimisation. 
@@ -32,26 +32,26 @@ projet_arme/
 ├── DATA/
 │   └── generalisation_data.json         # Données JSON saisies via interface
 │
-├── optimisation_militaire/
+├── Optimisation_militaire/
 │   ├── interface.py                     # Saisie interactive des données
 │   ├── generalisation.py                # Résolution généralisée (primal + dual)
 │   ├── graphique.py                     # Courbes coût/bénéfice
 │   └── app.py                           # Lancement de la version généralisée
 │
-├── resolution/
+├── Resolution/
 │   ├── question.py                      # Classes PrimalProblem et DualProblem
 │   ├── graphique.py                     # Visualisation 3D du modèle classique
 │   └── app.py                           # Lancement de la version classique
 │
-└── test/
+└── Tests/
     ├── test_optimisation_militaire.py     # Tests version généralisée
     └── test_resolution.py                 # Tests version classique
 ```
 
-## EXIGENCE:
+## 4.EXIGENCE:
 Python3.11
 
-## INSTALATION :
+## 5.INSTALATION :
 ### VIA PIP
 
 ```text
@@ -61,25 +61,26 @@ Python3.11
 Une fois la bibliothèque installée sur votre machine, vous pouvez l’utiliser directement dans vos scripts Python. La création d’un environnement virtuel n’est alors pas indispensable, bien qu’elle reste recommandée pour isoler les dépendances d’un projet.
 
 ### VIA LE CLONAGE ET POETRY
-- Clonez le package avec la commande suivante :
 
+- Clonez le package avec la commande suivante :
 ```text
 (base) NomDeUtilisateur git clone https://github.com/Ilayda-git/Projet-ARME.git
 ```
+
 
 - Ouvrez un terminal dans le répertoire racine du package avec la commande :
 ```text
 (base) NomDeUtilisateur cd ./Projet-ARME
 ```
 
-- Créez un environnement virtuel et installez les dépendances avec la commande :
 
+- Créez un environnement virtuel et installez les dépendances avec la commande :
 ```text
 (base) NomDeUtilisateur python -m poetry install
 ```
 
-- Activez l'environnement virtuel avec la commande :
 
+- Activez l'environnement virtuel avec la commande :
 ```text
 (base) NomDeUtilisateur python -m poetry env activate
 ```
@@ -88,7 +89,7 @@ Une fois la bibliothèque installée sur votre machine, vous pouvez l’utiliser
 
 Tant que cet environnement est actif, toutes les commandes Python que vous lancez s’exécutent dans cet espace isolé. Cela garantit que votre projet utilise uniquement les bibliothèques et dépendances installées dans cet environnement, sans interférer avec d’autres projets ou avec l’installation globale de Python sur votre ordinateur.
 
-## EXÉCUTION DU PROJET
+## 6.COMMENT EXECUTER LE PROJET 
 
 ### Version classique (données fixes)
 
@@ -103,7 +104,7 @@ Résultats :
 - Visualisation 3D
 - Étude de sensibilité
 
-### Version généralisée (données dynamiques)
+### Version généralisée (onnées saissies par l'utilisateur)
 
 Saisie utilisateur :
 ```text 

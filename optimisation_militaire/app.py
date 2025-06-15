@@ -90,7 +90,7 @@ def display_lot_table(constraints, costs, armes):
         | Coûts des lots      |  7 M$  | 11 M$  | 14 M$  |
         +---------------------+--------+--------+--------+
     """
-
+    print("données saissies par l'utilisateur via 'interface.py'\n")
     table = PrettyTable()
     n_lots = len(costs)
     headers = ["Type d'armement"] + [f"Lot {i+1}" for i in range(n_lots)]
