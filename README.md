@@ -94,8 +94,8 @@ Tant que cet environnement est actif, toutes les commandes Python que vous lance
 ### Version classique (données fixes)
 
 ```text
-        (base) NomDeUtilisateur Projet-ARME % cd Resolution
-        (base) NomDeUtilisateur Resolution % uv run app.py
+(base) NomDeUtilisateur Projet-ARME % cd Resolution
+(base) NomDeUtilisateur Resolution % uv run app.py
 ```
 Résultats :
 
@@ -108,9 +108,9 @@ Résultats :
 
 Saisie utilisateur :
 ```text 
-        (base) NomDeUtilisateur Projet-ARME % cd Optimisation_militaire
-        (base) NomDeUtilisateur Optimisation_militaire % uv run interface.py 
-        (base) NomDeUtilisateur Optimisation_militaire % uv run app.py
+(base) NomDeUtilisateur Projet-ARME % cd Optimisation_militaire
+(base) NomDeUtilisateur Optimisation_militaire % uv run interface.py 
+(base) NomDeUtilisateur Optimisation_militaire % uv run app.py
 ```
 Résultats :
 
