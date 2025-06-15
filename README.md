@@ -1,10 +1,11 @@
-# 📦 PROJET ARME – Optimisation linéaire d’achat d’armement
+# 📦 PROJET ARME : Optimisation linéaire d’achat d’armement
 
 ## 1. INTRODUCTION
 
 Ce projet ARME simule la planification d’achats d’armements pour le pays fictif PATIBULAIRE, qui doit satisfaire des besoins minimaux en défense tout en minimisant le coût total ( lien du sujet [clique ici](https://github.com/Ilayda-git/Projet-ARME/blob/main/Resolution/Sujet.md) ).
 
 ProjetARME est une bibliothèque Python conçue pour résoudre des problèmes de programmation linéaire. Elle propose une interface claire et facile à utiliser, adaptée à divers domaines tels que la logistique, la gestion de la production ou la planification.
+
 
 ## 2. Fonctionnalités principales
 
@@ -17,6 +18,7 @@ ProjetARME est une bibliothèque Python conçue pour résoudre des problèmes de
 Ce module permet de résoudre différents types de problèmes. L'un d'eux, appelé ProblemePrimal, vise à minimiser les dépenses du consommateur pour différents lots fournis par un ou plusieurs vendeurs. L'autre, appelé ProblemeDual, vise à maximiser le profit d'un vendeur unique.
 
 Ce travail illustre les enjeux économiques et stratégiques liés à l’achat d’armements dans un cadre optimisé.
+
 
 ## 3. STRUCTURE DU PROJET:
 
@@ -48,8 +50,10 @@ projet_arme/
     └── test_resolution.py                 # Tests version classique
 ```
 
+
 ## 4. EXIGENCE:
 Python3.11
+
 
 ## 5. INSTALATION :
 ### VIA PIP
@@ -88,6 +92,7 @@ Une fois la bibliothèque installée sur votre machine, vous pouvez l’utiliser
 (arme-smQvmoZ_-py3.12)= Lorsque vous voyez (arme-smQvmoZ_-py3.12) affiché dans votre terminal, cela signifie que vous êtes actuellement dans l’environnement virtuel dédié à votre projet. Ce nom correspond à l’environnement virtuel créé et activé par Poetry pour isoler les dépendances de ce projet.
 
 Tant que cet environnement est actif, toutes les commandes Python que vous lancez s’exécutent dans cet espace isolé. Cela garantit que votre projet utilise uniquement les bibliothèques et dépendances installées dans cet environnement, sans interférer avec d’autres projets ou avec l’installation globale de Python sur votre ordinateur.
+
 
 ## 6. COMMENT EXECUTER LE PROJET ? 
 
