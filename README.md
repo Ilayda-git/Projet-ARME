@@ -109,7 +109,7 @@ Résultats :
 - Visualisation 3D
 - Étude de sensibilité
 
-### Version généralisée (onnées saissies par l'utilisateur)
+### Version généralisée (données saissies par l'utilisateur)
 
 Saisie utilisateur :
 ```text 
