@@ -2,7 +2,7 @@
 
 ## 1. INTRODUCTION
 
-Ce projet ARME simule la planification d’achats d’armements pour le pays fictif PATIBULAIRE, qui doit satisfaire des besoins minimaux en défense tout en minimisant le coût total.
+Ce projet ARME simule la planification d’achats d’armements pour le pays fictif PATIBULAIRE, qui doit satisfaire des besoins minimaux en défense tout en minimisant le coût total. ( lien du suejet [clique ici](https://github.com/Ilayda-git/Projet-ARME/blob/main/Resolution/Sujet.md) ) 
 
 ProjetARME est une bibliothèque Python conçue pour résoudre des problèmes de programmation linéaire. Elle propose une interface claire et facile à utiliser, adaptée à divers domaines tels que la logistique, la gestion de la production ou la planification.
 
