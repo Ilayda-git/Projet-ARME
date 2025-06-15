@@ -1,12 +1,12 @@
 # 📦 PROJET ARME – Optimisation linéaire d’achat d’armement
 
-## 1.INTRODUCTION
+## 1. INTRODUCTION
 
 Ce projet ARME simule la planification d’achats d’armements pour le pays fictif PATIBULAIRE, qui doit satisfaire des besoins minimaux en défense tout en minimisant le coût total.
 
 ProjetARME est une bibliothèque Python conçue pour résoudre des problèmes de programmation linéaire. Elle propose une interface claire et facile à utiliser, adaptée à divers domaines tels que la logistique, la gestion de la production ou la planification.
 
-## 2.Fonctionnalités principales
+## 2. Fonctionnalités principales
 
 - Résolution de problèmes de programmation linéaire appliqués à la planification d’achats militaires.
 - Version classique avec données fixes.
@@ -18,10 +18,10 @@ Ce module permet de résoudre différents types de problèmes. L'un d'eux, appel
 
 Ce travail illustre les enjeux économiques et stratégiques liés à l’achat d’armements dans un cadre optimisé.
 
-## 3.STRUCTURE DU PROJET:
+## 3. STRUCTURE DU PROJET:
 
 Le projet est organisé en plusieurs dossiers distincts pour bien séparer les différentes parties. 
-- Le dossier DATA contient les fichiers JSON qui regroupent les données utilisées, telles que les coûts, contraintes et besoins servant aux calculs d’optimisation. 
+- Le dossier Data contient les fichiers JSON qui regroupent les données utilisées, telles que les coûts, contraintes et besoins servant aux calculs d’optimisation. 
 - Le dossier optimisation_militaire contient la version généralisée du projet avec quatre fichiers principaux : app.py pour lancer cette version, generalisation.py qui inclut la modélisation étendue, graphique.py qui fournit les fonctions de visualisation, et interface.py qui gère l’interaction utilisateur. 
 - Le dossier resolution contient la version classique du problème avec trois fichiers : app.py, question.py qui définit les classes PrimalProblem et DualProblem ainsi que leurs méthodes de résolution, et graphique.py pour les visualisations graphiques. 
 - Enfin, le dossier test regroupe deux fichiers de tests unitaires, test_optimisation_militaire.py et test_resolution.py, qui permettent de vérifier la validité et la robustesse du code.
@@ -29,7 +29,7 @@ Le projet est organisé en plusieurs dossiers distincts pour bien séparer les d
 ```text
 projet_arme/
 │
-├── DATA/
+├── Data/
 │   └── generalisation_data.json         # Données JSON saisies via interface
 │
 ├── Optimisation_militaire/
@@ -48,10 +48,10 @@ projet_arme/
     └── test_resolution.py                 # Tests version classique
 ```
 
-## 4.EXIGENCE:
+## 4. EXIGENCE:
 Python3.11
 
-## 5.INSTALATION :
+## 5. INSTALATION :
 ### VIA PIP
 
 ```text
@@ -89,7 +89,7 @@ Une fois la bibliothèque installée sur votre machine, vous pouvez l’utiliser
 
 Tant que cet environnement est actif, toutes les commandes Python que vous lancez s’exécutent dans cet espace isolé. Cela garantit que votre projet utilise uniquement les bibliothèques et dépendances installées dans cet environnement, sans interférer avec d’autres projets ou avec l’installation globale de Python sur votre ordinateur.
 
-## 6.COMMENT EXECUTER LE PROJET 
+## 6. COMMENT EXECUTER LE PROJET ? 
 
 ### Version classique (données fixes)
 
